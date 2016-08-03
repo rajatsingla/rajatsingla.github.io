@@ -315,6 +315,10 @@ pre {
       .post-content h4 {
         font-size: 18px; } }
 
+.inner-content {
+  padding-bottom: 20px;
+  list-style: none; }
+
 /**
  * Syntax highlighting styles
  */

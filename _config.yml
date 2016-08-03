@@ -9,13 +9,14 @@
 title: Rajat Singla
 email: rajatrs5054@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
+  Hi there, Welcome to rajat's blog. You will find blogs here on ror,emberjs,deployment
+  ,some cool programming stuff and my new findings.
+  Currently i am working on soldier2ndlife(a product of navyug) a portal for veterans to help them after
+  they put down their uniforms.To get my attention send me a paradox. :)
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://yourdomain.com" # the base hostname & protocol for your site
-twitter_username: jekyllrb
-github_username:  jekyll
+url: "http://rajatsingla.com" # the base hostname & protocol for your site
+twitter_username: rajatrs5054
+github_username:  rajatsingla
 
 # Build settings
 markdown: kramdown
