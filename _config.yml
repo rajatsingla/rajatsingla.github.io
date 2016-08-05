@@ -11,8 +11,7 @@ email: rajatrs5054@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
   Hi there, Welcome to rajat's blog. You will find blogs here on ror,emberjs,deployment
   ,some cool programming stuff and my new findings.
-  Currently i am working on soldier2ndlife(a product of navyug) a portal for veterans to help them after
-  they put down their uniforms.To get my attention send me a paradox. :)
+  Currently i am working on soldier2ndlife(a product of navyug) a portal to help retired veterans.To get my attention send me a paradox. :)
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://rajatsingla.com" # the base hostname & protocol for your site
 twitter_username: rajatrs5054
