@@ -2,13 +2,128 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Rajat Singla</title>
-    <description>Hi there, Welcome to rajat&#39;s blog. You will find blogs here on ror,emberjs,deployment ,some cool programming stuff and my new findings. Currently i am working on soldier2ndlife(a product of navyug) a portal for veterans to help them after putting down there uniforms.To get my attention send me a paradox. :)
+    <description>Hi there, Welcome to rajat&#39;s blog. You will find blogs here on ror,emberjs,deployment ,some cool programming stuff and my new findings. Currently i am working on soldier2ndlife(a product of navyug) a portal to help retired veterans.To get my attention send me a paradox. :)
 </description>
     <link>http://rajatsingla.com/</link>
     <atom:link href="http://rajatsingla.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 03 Aug 2016 20:24:31 +0530</pubDate>
-    <lastBuildDate>Wed, 03 Aug 2016 20:24:31 +0530</lastBuildDate>
+    <pubDate>Sat, 06 Aug 2016 13:11:57 +0530</pubDate>
+    <lastBuildDate>Sat, 06 Aug 2016 13:11:57 +0530</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
+    
+      <item>
+        <title>Sessions and csrf in rails.</title>
+        <description>&lt;p&gt;&lt;b&gt;
+What is session?
+&lt;/b&gt;
+Session is client’s information which can comprise of various things like current logged in user on that particular client, csrf token or any other information. Now this information can be saved at three places naming cache,cookie,database.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&lt;b&gt;
+Cookie store, cache store, or database store?
+&lt;/b&gt;
+When it works, storing your sessions in cookies is by far the easiest way to go. It doesn’t need any extra infrastructure or setup.
+But if you need to move beyond the cookie session store, you have two options:
+Store sessions in a database, or store them in cache your.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&lt;b&gt;
+How cookie session store work in rails ?
+&lt;/b&gt;
+When you request a webpage, the server sets a cookie when it responds back.
+This cookie contains your session store.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;session&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;store&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;initializers&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;session_store&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;rb&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;no&quot;&gt;Rails&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;application&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;session_store&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:active_record_store&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:key&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;_my_app_session&#39;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;By default, in Rails, there isn’t much of a difference. Rails does some work with the cookie to make it more secure. But besides that, it works the way you’d expect. Your Rails app puts some data into the cookie, the same data comes out of the cookie.
+And until the cookie expires, every time you make a request, your browser will the send cookies back to the server
+server will extract the data out of cookie and with this data(information of client) builds a session which we call rails session.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;no&quot;&gt;Sessions&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;are&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;easy&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rails&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;code:
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;session&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:current_user_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;id&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&lt;b&gt;
+What is csrf?
+&lt;/b&gt;
+Cross site request forgery
+lets say you are logged in on facebook.com
+and in another tab you have opened a hacker’s website. Which is urging you to click a image saying you will get 100 coins. But actually it will send a request to facebook.com deleting all users.
+This request will be successfull because browser will send cookie along with the request and in this cookie your current session exists.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&lt;b&gt;
+How to prevent csrf?
+&lt;/b&gt;
+Synchronizer token pattern
+Synchronizer token pattern (STP) is a technique where a token, secret and unique value for each request, is embedded by the web application in all HTML forms and verified on the server side. The token may be generated by any method that ensures unpredictability and uniqueness (e.g. using a hash chain of random seed). The attacker is thus unable to place a correct token in their requests to authenticate them.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;input&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;hidden&quot;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;csrfmiddlewaretoken&quot;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;KbyUmhTLMpYj7CD2di7JKP1P3qmLlkPt&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Security of this technique is based on the assumption that only JavaScript running within the same origin will be able to read the cookie’s value. JavaScript running from a rogue file or email will not be able to read it and copy into the custom header.
+Cookie-to-Header Token
+On login, the web application sets a cookie containing a random token that remains the same for the whole user session&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;no&quot;&gt;Set&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Cookie&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Csrf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;token&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i8XNjC4b8KVok4uw5RftR38Wgp2BFwql&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;expires&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Thu&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;23&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Jul&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2015&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;25&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;33&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;GMT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Max&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Age&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;31449600&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;JavaScript operating on the client side reads its value and copies it into a custom HTTP header sent with each transactional request&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;no&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Csrf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Token&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i8XNjC4b8KVok4uw5RftR38Wgp2BFwql&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;The server validates presence and integrity of the token
+Even though the csrf-token cookie will be automatically sent with the rogue request, the server will be still expecting a valid X-Csrf-Token header.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&lt;b&gt;
+How anti-csrf works in rails?
+&lt;/b&gt;
+On making a new session rails generate a random hash of 32 bit characters, encodes it by base64 encoding and saves it in session[:csrf_token].
+And in index.html it embeds a form_authenticity_token in X-csrf-token named meta tag&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;meta&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;form_authenticity_token&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;X-csrf-token&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;meta&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;3aLSYWhz1J4psQJLQfGnFYYVyO9MQACD5KdWLls7iSQ=&quot;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;X-csrf-token&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Which is randomaly generated on every post request using session[:csrf_token]
+And on every post request rails compare session[:csrf_token] and token from X-csrf-token named meta tag and validates the request.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&lt;b&gt;
+How to add anti-csrf thing in my app?
+&lt;/b&gt;
+Just add
+protect_from_forgery
+in your application controller and you are protected from csrf.
+yes, it’s that simple&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&lt;b&gt;
+What if session[:csrf_token] and token from X-csrf-token named meta tag doesn’t match?
+&lt;/b&gt;
+It depends on the option you passed with protect_from_forgery
+&lt;br /&gt;
+protect_from_forgery with: :null_session(dafault option)
+&lt;br /&gt;
+Set all values to nil in all cookies, including the session. That means the user won’t be logged in anymore for that action and can’t perform the change
+&lt;br /&gt;
+protect_from_forgery with: :reset_session Rails set a new cookie with empty session in browser.That means the user won’t be logged in anymore.
+&lt;br /&gt;
+protect_from_forgery with: :exception Raises an ActionController::InvalidAuthenticityToken exception.&lt;/p&gt;
+
+&lt;p&gt;source:
+&lt;a href=&quot;http://www.rorsecurity.info/&quot;&gt;http://www.rorsecurity.info/&lt;/a&gt;
+&lt;br /&gt;
+&lt;a href=&quot;http://www.justinweiss.com/articles/how-rails-sessions-work/&quot;&gt;http://www.justinweiss.com/articles/how-rails-sessions-work/&lt;/a&gt;
+&lt;br /&gt;
+&lt;a href=&quot;http://guides.rubyonrails.org/security.html&quot;&gt;http://guides.rubyonrails.org/security.html&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Thu, 04 Aug 2016 21:41:55 +0530</pubDate>
+        <link>http://rajatsingla.com/ruby/2016/08/04/session-and-csrf-in-rails.html</link>
+        <guid isPermaLink="true">http://rajatsingla.com/ruby/2016/08/04/session-and-csrf-in-rails.html</guid>
+        
+        
+        <category>ruby</category>
+        
+      </item>
     
       <item>
         <title>Modules vs Classes in Ruby</title>

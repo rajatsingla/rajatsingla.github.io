@@ -6,12 +6,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Modules vs Classes in Ruby</title>
-  <meta name="description" content="A Module is a collection of methods and constants. The methods in a module may be instance methods or module methods. Instance methods appear as methods in a...">
+  <title>How to add csrf in Ember app</title>
+  <meta name="description" content="What if i’m using rails as api, so my frontend is seperated from rails can i still prevent csrf and how?So lets take an example where we use ember for fronte...">
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://rajatsingla.com/ruby/2016/07/28/module-vs-class.html">
+  <link rel="canonical" href="http://rajatsingla.com/ruby/2016/07/30/how-to-add-csrf-in-ember-app.html">
   <link rel="alternate" type="application/rss+xml" title="Rajat Singla" href="http://rajatsingla.com/feed.xml">
 </head>
 
@@ -57,31 +57,51 @@
         <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title" itemprop="name headline">Modules vs Classes in Ruby</h1>
-    <p class="post-meta"><time datetime="2016-07-28T12:41:55+05:30" itemprop="datePublished">Jul 28, 2016</time></p>
+    <h1 class="post-title" itemprop="name headline">How to add csrf in Ember app</h1>
+    <p class="post-meta"><time datetime="2016-07-30T21:21:58+05:30" itemprop="datePublished">Jul 30, 2016</time></p>
   </header>
 
   <div class="post-content" itemprop="articleBody">
-    <p>A Module is a collection of methods and constants. The methods in a module may be instance methods or module methods. Instance methods appear as methods in a class when the module is included, module methods do not. Conversely, module methods may be called without creating an encapsulating object, while instance methods may not. (See Module#module_function.)</p>
+    <p><b>
+What if i’m using rails as api, so my frontend is seperated from rails can i still prevent csrf and how?
+</b>
+<br />
+So lets take an example where we use ember for frontend and rails as api.
+In this case apart from adding protect_from_forgery in application controller you have to do additional three things.
+One you have to add following code in application controller:</p>
 
-<p>In the descriptions that follow, the parameter sym refers to a symbol, which is either a quoted string or a Symbol (such as :name).</p>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">after_action</span> <span class="ss">:set_csrf_token</span>
+  <span class="kp">protected</span>
+  <span class="k">def</span> <span class="nf">set_csrf_token</span>
+    <span class="k">if</span> <span class="n">request</span><span class="p">.</span><span class="nf">xhr?</span>
+      <span class="c1"># Add the newly created csrf token to the page headers</span>
+      <span class="c1"># These values are sent on 1 request only</span>
+      <span class="n">response</span><span class="p">.</span><span class="nf">headers</span><span class="p">[</span><span class="s1">'X-CSRF-Token'</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"</span><span class="si">#{</span><span class="n">form_authenticity_token</span><span class="si">}</span><span class="s2">"</span>
+    <span class="k">end</span>
+  <span class="k">end</span></code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">Module</span> <span class="no">Mod</span>
-  <span class="kp">include</span> <span class="no">Math</span>
-  <span class="no">CONST</span> <span class="o">=</span> <span class="mi">1</span>
-  <span class="k">def</span> <span class="nf">meth</span>
-    <span class="c1">#  ...</span>
-  <span class="k">end</span>
-<span class="k">end</span>
-<span class="no">Mod</span><span class="p">.</span><span class="nf">class</span>              <span class="c1">#=&gt; Module</span>
-<span class="no">Mod</span><span class="p">.</span><span class="nf">constants</span>          <span class="c1">#=&gt; [:CONST, :PI, :E]</span>
-<span class="no">Mod</span><span class="p">.</span><span class="nf">instance_methods</span>   <span class="c1">#=&gt; [:meth]</span></code></pre></figure>
+<p>Here we are sending newly generated form_authenticity_token in response of xhr request(ajax- XMLHttpRequest)
+“request.xhr?” is to ensure that it is ajax request, we will not want to send token to any other request right.
+<br />Two you have to set this new token in meta tag by extracting it from response.
+<br />Third you will send csrf token in request header by extracting it from meta tag.
+you can achieve two and three by adding following code in app.js of ember</p>
 
-<p>constants → array
-constants(inherited) → array
-In the first form, returns an array of the names of all constants accessible from the point of call. This list includes the names of all modules and classes defined in the global scope.</p>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="err">$</span> <span class="o">-&gt;</span>
+  <span class="vg">$.</span><span class="n">ajaxPrefilter</span> <span class="p">(</span><span class="n">options</span><span class="p">,</span> <span class="n">originalOptions</span><span class="p">,</span> <span class="n">xhr</span><span class="p">)</span> <span class="o">-&gt;</span>
+    <span class="n">token</span> <span class="o">=</span> <span class="err">$</span><span class="p">(</span><span class="s1">'meta[name="csrf-token"]'</span><span class="p">).</span><span class="nf">attr</span><span class="p">(</span><span class="s1">'content'</span><span class="p">)</span>
+    <span class="n">xhr</span><span class="p">.</span><span class="nf">setRequestHeader</span><span class="p">(</span><span class="s1">'X-CSRF-Token'</span><span class="p">,</span> <span class="n">token</span><span class="p">)</span>
 
-<p>source:<a> http://ruby-doc.org/core-2.2.0/Module.html</a></p>
+  <span class="err">$</span><span class="p">(</span><span class="n">document</span><span class="p">).</span><span class="nf">ajaxComplete</span> <span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">xhr</span><span class="p">,</span> <span class="n">settings</span><span class="p">)</span> <span class="o">-&gt;</span>
+    <span class="n">csrf_token</span> <span class="o">=</span> <span class="n">xhr</span><span class="p">.</span><span class="nf">getResponseHeader</span><span class="p">(</span><span class="s1">'X-CSRF-Token'</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">csrf_token</span>
+      <span class="err">$</span><span class="p">(</span><span class="s1">'meta[name="csrf-token"]'</span><span class="p">).</span><span class="nf">attr</span> <span class="s1">'content'</span><span class="p">,</span> <span class="n">csrf_token</span></code></pre></figure>
+
+<p><br />
+<b>
+Why change csrf token in header on every post request and not only when session changes?
+</b>
+If it were to change token only when session changes there would be an extra overhead to trigger session change and then generate csrf token and set in header.
+It is a lot easier to randomally generate csrf token using session[:_csrf_token] on every post request.</p>
 
   </div>
 
