@@ -3,6 +3,7 @@ layout: post
 title:  "How to add csrf in Ember app"
 date:   2016-08-06 21:41:58 +0550
 categories: ruby
+comments: true
 ---
 <b>
 What if i'm using rails as api, so my frontend is seperated from rails can i still prevent csrf and how?

@@ -3,6 +3,7 @@ layout: post
 title:  "Sessions and csrf in rails."
 date:   2016-08-04 21:41:55 +0530
 categories: ruby
+comments: true
 ---
 <b>
 What is session?

@@ -3,6 +3,7 @@ layout: post
 title:  "Modules vs Classes in Ruby"
 date:   2016-07-28 12:41:55 +0530
 categories: ruby
+comments: true
 ---
 A Module is a collection of methods and constants. The methods in a module may be instance methods or module methods. Instance methods appear as methods in a class when the module is included, module methods do not. Conversely, module methods may be called without creating an encapsulating object, while instance methods may not. (See Module#module_function.)
 
