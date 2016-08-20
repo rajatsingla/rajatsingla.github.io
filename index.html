@@ -9,12 +9,15 @@ layout: default
   <ul class="post-list">
     {% for post in site.posts %}
       <li>
+        <span class="icon icon--clock">{% include clock-o.svg %}</span>
         <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+        <span class="icon icon--comments">{% include comments.svg %}</span>
+         <a class="post-meta" href='{{ post.url | prepend: site.baseurl }}#disqus_thread' data-disqus-identifier='{{ post.title | url_encode}}'>Comments</a>
 
         <h2>
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}#disqus_thread"
-	data-disqus-identifier="{{post.url}}">{{ post.title }}</a>
+          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
         </h2>
+        {{ post.excerpt }}
       </li>
     {% endfor %}
   </ul>
@@ -22,3 +25,4 @@ layout: default
   <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
 
 </div>
+<script id="dsq-count-scr" src="//rajatsingla.disqus.com/count.js" async></script>
