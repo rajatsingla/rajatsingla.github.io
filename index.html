@@ -17,7 +17,11 @@ layout: default
         <h2>
           <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
         </h2>
-        {{ post.excerpt }}
+        {{ post.excerpt | strip_html }}
+        <footer class="align-right box-link">
+          <a rel="full-article" href="{{ post.url }}">Read more <i class=" icon-chevron-right"></i></a>
+        </footer>
+        <hr class="nice-hr">
       </li>
     {% endfor %}
   </ul>

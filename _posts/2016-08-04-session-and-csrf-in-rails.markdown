@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Sessions and csrf in rails."
+author: "Rajat Singla"
 date:   2016-08-04 21:41:55 +0530
 categories: ruby
 comments: true
@@ -9,7 +10,7 @@ comments: true
 What is session?
 </b>
 Session is client's information which can comprise of various things like current logged in user on that particular client, csrf token or any other information. Now this information can be saved at three places naming cache,cookie,database.
-
+<!--more-->
 <br>
 <b>
 Cookie store, cache store, or database store?

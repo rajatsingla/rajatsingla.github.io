@@ -1,17 +1,18 @@
 ---
 layout: post
 title:  "How to add csrf in Ember app"
+author: "Rajat Singla"
 date:   2016-08-06 21:41:58 +0550
-categories: ruby
+categories: ruby,csrf
 comments: true
 ---
-<b>
-What if i'm using rails as api, so my frontend is seperated from rails can i still prevent csrf and how?
-</b>
-<br>
+
+## What if i'm using rails as api, so my frontend is seperated from rails can i still prevent csrf and how?
+
 So lets take an example where we use ember for frontend and rails as api.
 In this case apart from adding protect_from_forgery in application controller you have to do additional three things.
 One you have to add following code in application controller:
+<!--more-->
 {% highlight ruby %}
 after_action :set_csrf_token
   protected

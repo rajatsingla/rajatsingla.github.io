@@ -6,12 +6,20 @@ comments: true
 
   <header class="post-header">
     <h1 class="post-title" itemprop="name headline">{{ page.title }}</h1>
-    <p class="post-meta"><time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</time>{% if page.author %} • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ page.author }}</span></span>{% endif %}</p>
+    <p class="post-meta">
+      <span class="icon icon--clock">{% include clock-o.svg %}</span>
+      <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</time>
+      {% if page.author %} • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ page.author }}</span></span>{% endif %}
+    </p>
   </header>
 
   <div class="post-content" itemprop="articleBody">
     {{ content }}
   </div>
+  <footer class="align-left box-link">
+    <a rel="full-article" href="{{ site.url }}"><i class="icon-chevron-left"></i> Back to Articles</a>
+  </footer>
+  <hr class="nice-hr">
 
   {% if page.comments %}
   <div id="disqus_thread"></div>
