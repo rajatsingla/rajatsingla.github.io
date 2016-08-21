@@ -7,13 +7,6 @@
       {{ site.title }}
     </a>
 
-    <form class="search" action="https://www.google.com/search" method="GET">
-        <input type="hidden" name="as_sitesearch" value="http://rajatsingla.in">
-        <div>
-            <input class="search-input" type="text" name="as_q" placeholder="Search">
-        </div>
-    </form>
-
     <nav class="site-nav">
       <a href="#" class="menu-icon">
         <svg viewBox="0 0 18 15">
@@ -31,6 +24,13 @@
         {% endfor %}
       </div>
     </nav>
+
+    <form class="search" action="https://www.google.com/search" method="GET">
+        <input type="hidden" name="as_sitesearch" value="http://rajatsingla.in">
+        <div>
+            <input class="search-input" type="text" name="as_q" placeholder="Search">
+        </div>
+    </form>
 
   </div>
 

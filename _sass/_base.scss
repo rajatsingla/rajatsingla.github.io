@@ -310,10 +310,15 @@ Search bar css
 form.search{
   display: inline-block;
   line-height: 56px;
+  float: right;
   .search-input{
     height: 30px;
-    border: 0;
     padding-left: 10px;
-    margin-left: $spacing-unit / 2;
+    margin-right: $spacing-unit / 2;
+    border: 1px solid whitesmoke;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+    -webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
   }
 }
