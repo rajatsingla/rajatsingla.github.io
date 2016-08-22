@@ -9,9 +9,8 @@ layout: default
   <ul class="post-list">
     {% for post in site.posts %}
       <li>
-        <span class="icon icon--clock">{% include clock-o.svg %}</span>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
-        <span class="icon icon--comments">{% include comments.svg %}</span>
+        <span class="post-meta"><i class=" icon-chevron-calendar"></i> {{ post.date | date: "%b %-d, %Y" }}</span>
+        <span class="icon icon--comments"><i class=" icon-chevron-comments"></i> {% include comments.svg %}</span>
          <a class="post-meta" href='{{ post.url | prepend: site.baseurl }}#disqus_thread' data-disqus-identifier='{{ post.title | url_encode}}'>Comments</a>
 
         <h2>

@@ -265,6 +265,22 @@ footer.box-link a[rel=full-article]:hover {
     content: "\f053";
 }
 
+.icon-chevron-calendar:before {
+    content: "\f073";
+}
+
+.icon-chevron-comments:before {
+    content: "\f086";
+}
+
+.icon-chevron-github:before {
+    content: "\f09b";
+}
+
+.icon-chevron-twitter:before {
+    content: "\f099";
+}
+
 a[rel=full-article] i {
     font-size: .8em;
 }
@@ -290,17 +306,12 @@ a [class^="icon-"], a [class*=" icon-"] {
     display: inline-block;
 }
 
-hr.nice-hr::after {
-    content: '';
-    display: block;
-    width: 100%;
-    height: 1px;
-    background: #f7f6f4;
-    background-image: -webkit-gradient(linear, 0 0, 100% 0, from(#f7f6f4), to(#f7f6f4), color-stop(50%, #c3c3c3));
-    background-image: -webkit-linear-gradient(left, #f7f6f4, #c3c3c3, #f7f6f4);
-    background-image: -moz-linear-gradient(left, #f7f6f4, #c3c3c3, #f7f6f4);
-    background-image: -ms-linear-gradient(left, #f7f6f4, #c3c3c3, #f7f6f4);
-    background-image: -o-linear-gradient(left, #f7f6f4, #c3c3c3, #f7f6f4);
+hr.nice-hr{
+  height: 1px;
+  border: 0;
+  border-bottom: 1px dotted rgba(150,160,176,0.7);
+  margin: 4em 0;
+  opacity: 0.5;
 }
 
 /*
