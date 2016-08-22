@@ -10,8 +10,9 @@ layout: default
     {% for post in site.posts %}
       <li>
         <span class="post-meta"><i class=" icon-chevron-calendar"></i> {{ post.date | date: "%b %-d, %Y" }}</span>
-        <span class="icon icon--comments"><i class=" icon-chevron-comments"></i> {% include comments.svg %}</span>
-         <a class="post-meta" href='{{ post.url | prepend: site.baseurl }}#disqus_thread' data-disqus-identifier='{{ post.title | url_encode}}'>Comments</a>
+         <a class="post-meta" href='{{ post.url | prepend: site.baseurl }}#disqus_thread' data-disqus-identifier='{{ post.title | url_encode}}'>
+           <i class=" icon-chevron-comments"></i> Comments
+         </a>
 
         <h2>
           <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
