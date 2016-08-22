@@ -3,7 +3,8 @@ layout: post
 title:  "How to add csrf in Ember app"
 author: "Rajat Singla"
 date:   2016-08-06 21:41:58 +0550
-categories: ruby,csrf
+categories: ruby
+tags: ruby,csrf
 comments: true
 ---
 
