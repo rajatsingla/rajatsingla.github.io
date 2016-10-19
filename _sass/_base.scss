@@ -269,6 +269,10 @@ footer.box-link a[rel=full-article]:hover {
     content: "\f073";
 }
 
+.icon-chevron-tags:before {
+    content: "\f02c";
+}
+
 .icon-chevron-comments:before {
     content: "\f086";
     color: #828282;
@@ -333,4 +337,12 @@ form.search{
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
     -webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
   }
+}
+a.post-tag:after{
+  content: '|';
+  padding-left: 4px;
+}
+
+a.post-tag:nth-last-child(1):after{
+  content: ' ';
 }

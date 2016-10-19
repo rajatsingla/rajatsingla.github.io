@@ -4,6 +4,11 @@ title:  "Sessions and csrf in rails."
 author: "Rajat Singla"
 date:   2016-08-04 21:41:55 +0530
 categories: ruby
+tags:
+- ruby
+- session
+- csrf
+- cookie
 comments: true
 ---
 <b>

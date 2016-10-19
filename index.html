@@ -10,10 +10,15 @@ layout: default
     {% for post in site.posts %}
       <li>
         <span class="post-meta"><i class=" icon-chevron-calendar"></i> {{ post.date | date: "%b %-d, %Y" }}</span>
-        <i class=" icon-chevron-comments"></i> 
+        <i class=" icon-chevron-comments"></i>
          <a class="post-meta" href='{{ post.url | prepend: site.baseurl }}#disqus_thread' data-disqus-identifier='{{ post.title | url_encode}}'>
             Comments
          </a>
+         <span class="post-meta"><i class=" icon-chevron-tags"></i>
+           {% for tag in post.tags %}
+            <a title="{{tag}}" href="tag/{{tag}}" class="post-tag">{{tag}}</a>
+           {% endfor %}
+         </span>
 
         <h2>
           <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
