@@ -1,38 +1,237 @@
----
-layout: default
----
+<!DOCTYPE html>
+<html>
 
-<div class="home">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Rajat Singla</title>
+  <meta name="description" content="Hi there, Welcome to rajat's blog. You will find blogs here on ror,emberjs,deployment ,some cool programming stuff and my new findings. Currently i am working on soldier2ndlife(a product of navyug) a portal to help retired veterans.To get my attention send me a paradox. :)
+">
+  <meta name="keywords" content="Ruby, Programming, Math, Rails, Jekyll, Static sites, Blogging">
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://rajatsingla.in/">
+  <link rel="alternate" type="application/rss+xml" title="Rajat Singla" href="http://rajatsingla.in/feed.xml">
+</head>
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">
+      Archives
+    </a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+          
+        
+          
+          
+          <a class="page-link" href="/about/">About</a>
+          
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          
+          
+        
+          
+          
+          
+        
+          
+          
+          
+        
+          
+          
+          
+        
+        <a class="page-link" href="/resume/Resume.pdf" target="_blank" title="resume">
+          <img src="/images/singla.png" alt="Rajat Singla" width="36" height="36">
+        </a>
+      </div>
+    </nav>
+
+    <form class="search" action="https://www.google.com/search" method="GET">
+        <input type="hidden" name="as_sitesearch" value="http://rajatsingla.in">
+        <div>
+            <input class="search-input" type="text" name="as_q" placeholder="Search">
+        </div>
+    </form>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="home">
 
   <h1 class="page-heading">Posts</h1>
 
   <ul class="post-list">
-    {% for post in site.posts %}
+    
       <li>
-        <span class="post-meta"><i class=" icon-chevron-calendar"></i> {{ post.date | date: "%b %-d, %Y" }}</span>
+        <span class="post-meta"><i class=" icon-chevron-calendar"></i> Aug 6, 2016</span>
         <i class=" icon-chevron-comments"></i>
-         <a class="post-meta" href='{{ post.url | prepend: site.baseurl }}#disqus_thread' data-disqus-identifier='{{ post.title | url_encode}}'>
+         <a class="post-meta" href='/ruby/2016/08/06/how-to-add-csrf-in-ember-app.html#disqus_thread' data-disqus-identifier='How+to+add+csrf+in+Ember+app'>
             Comments
          </a>
          <span class="post-meta"><i class=" icon-chevron-tags"></i>
-           {% for tag in post.tags %}
-            <a title="{{tag}}" href="tag/{{tag}}" class="post-tag">{{tag}}</a>
-           {% endfor %}
+           
+            <a title="ruby" href="tag/ruby" class="post-tag">ruby</a>
+           
+            <a title="csrf" href="tag/csrf" class="post-tag">csrf</a>
+           
          </span>
 
         <h2>
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+          <a class="post-link" href="/ruby/2016/08/06/how-to-add-csrf-in-ember-app.html">How to add csrf in Ember app</a>
         </h2>
-        {{ post.excerpt | strip_html }}
+        What if i’m using rails as api, so my frontend is seperated from rails can i still prevent csrf and how?
+
+So lets take an example where we use ember for frontend and rails as api.
+In this case apart from adding protect_from_forgery in application controller you have to do additional three things.
+One you have to add following code in application controller:
+
+
         <footer class="align-right box-link">
-          <a rel="full-article" href="{{ post.url }}">Read more <i class=" icon-chevron-right"></i></a>
+          <a rel="full-article" href="/ruby/2016/08/06/how-to-add-csrf-in-ember-app.html">Read more <i class=" icon-chevron-right"></i></a>
         </footer>
         <hr class="nice-hr">
       </li>
-    {% endfor %}
+    
+      <li>
+        <span class="post-meta"><i class=" icon-chevron-calendar"></i> Aug 4, 2016</span>
+        <i class=" icon-chevron-comments"></i>
+         <a class="post-meta" href='/ruby/2016/08/04/session-and-csrf-in-rails.html#disqus_thread' data-disqus-identifier='Sessions+and+csrf+in+rails.'>
+            Comments
+         </a>
+         <span class="post-meta"><i class=" icon-chevron-tags"></i>
+           
+            <a title="ruby" href="tag/ruby" class="post-tag">ruby</a>
+           
+            <a title="session" href="tag/session" class="post-tag">session</a>
+           
+            <a title="csrf" href="tag/csrf" class="post-tag">csrf</a>
+           
+            <a title="cookie" href="tag/cookie" class="post-tag">cookie</a>
+           
+         </span>
+
+        <h2>
+          <a class="post-link" href="/ruby/2016/08/04/session-and-csrf-in-rails.html">Sessions and csrf in rails.</a>
+        </h2>
+        
+What is session?
+
+Session is client’s information which can comprise of various things like current logged in user on that particular client, csrf token or any other information. Now this information can be saved at three places naming cache,cookie,database.
+
+
+        <footer class="align-right box-link">
+          <a rel="full-article" href="/ruby/2016/08/04/session-and-csrf-in-rails.html">Read more <i class=" icon-chevron-right"></i></a>
+        </footer>
+        <hr class="nice-hr">
+      </li>
+    
+      <li>
+        <span class="post-meta"><i class=" icon-chevron-calendar"></i> Jul 28, 2016</span>
+        <i class=" icon-chevron-comments"></i>
+         <a class="post-meta" href='/ruby/2016/07/28/module-vs-class.html#disqus_thread' data-disqus-identifier='Modules+vs+Classes+in+Ruby'>
+            Comments
+         </a>
+         <span class="post-meta"><i class=" icon-chevron-tags"></i>
+           
+         </span>
+
+        <h2>
+          <a class="post-link" href="/ruby/2016/07/28/module-vs-class.html">Modules vs Classes in Ruby</a>
+        </h2>
+        A Module is a collection of methods and constants. The methods in a module may be instance methods or module methods. Instance methods appear as methods in a class when the module is included, module methods do not. Conversely, module methods may be called without creating an encapsulating object, while instance methods may not. (See Module#module_function.)
+
+
+        <footer class="align-right box-link">
+          <a rel="full-article" href="/ruby/2016/07/28/module-vs-class.html">Read more <i class=" icon-chevron-right"></i></a>
+        </footer>
+        <hr class="nice-hr">
+      </li>
+    
   </ul>
 
-  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
+  <p class="rss-subscribe">subscribe <a href="/feed.xml">via RSS</a></p>
 
 </div>
 <script id="dsq-count-scr" src="//rajatsingla.disqus.com/count.js" async></script>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Rajat Singla</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>Rajat Singla</li>
+          <li><a href="mailto:rajatrs5054@gmail.com">rajatrs5054@gmail.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/rajatsingla"><span class="username"><i class=" icon-chevron-github"></i> rajatsingla</span></a>
+
+          </li>
+          
+
+          
+          <li>
+            <a href="https://twitter.com/rajatrs5054"><span class="username"><i class=" icon-chevron-twitter"></i> rajatrs5054</span></a>
+
+          </li>
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3">
+        <p>Hi there, Welcome to rajat's blog. You will find blogs here on ror,emberjs,deployment ,some cool programming stuff and my new findings. Currently i am working on soldier2ndlife(a product of navyug) a portal to help retired veterans.To get my attention send me a paradox. :)
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>
