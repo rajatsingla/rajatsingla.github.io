@@ -118,16 +118,16 @@ pre {
  * Wrapper
  */
 .wrapper {
-  max-width: -webkit-calc(800px - (40px * 2));
-  max-width: calc(800px - (40px * 2));
+  max-width: -webkit-calc(1200px - (40px * 2));
+  max-width: calc(1200px - (40px * 2));
   margin-right: auto;
   margin-left: auto;
   padding-right: 40px;
   padding-left: 40px; }
   @media screen and (max-width: 800px) {
     .wrapper {
-      max-width: -webkit-calc(800px - (40px));
-      max-width: calc(800px - (40px));
+      max-width: -webkit-calc(1200px - (40px));
+      max-width: calc(1200px - (40px));
       padding-right: 20px;
       padding-left: 20px; } }
 
@@ -268,6 +268,78 @@ a.post-tag:after {
 
 a.post-tag:nth-last-child(1):after {
   content: ' '; }
+
+.column {
+  display: inline-block;
+  float: left; }
+
+.column.w8 {
+  width: 66%;
+  padding: 0 2%; }
+
+.column.w2 {
+  width: 26%;
+  padding: 0 2%; }
+
+.date-highlight {
+  text-align: center;
+  margin: 50px 0;
+  color: #999;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  align-items: center; }
+
+.date-highlight:before {
+  content: '';
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  height: 2px;
+  background: #eaeaea;
+  margin-right: 10px; }
+
+.date-highlight:after {
+  content: '';
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  height: 2px;
+  background: #eaeaea;
+  margin-left: 10px; }
+
+ul.entry-meta {
+  font-size: .75rem;
+  text-transform: uppercase;
+  padding-left: 10px;
+  margin-left: 5px; }
+  ul.entry-meta li {
+    list-style-type: none;
+    display: inline;
+    position: relative;
+    margin-bottom: 20px;
+    margin-top: 20px; }
+  ul.entry-meta .tag {
+    display: inline-block;
+    background-color: #f7f7f7;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+    margin: 2px 5px;
+    font-size: 0.7rem;
+    border: none !important;
+    color: rgba(0, 0, 0, 0.36); }
+  ul.entry-meta span {
+    float: left;
+    padding: 2px 6px; }
+  ul.entry-meta span.count {
+    background-color: #ebebeb; }
 
 /**
  * Site header
