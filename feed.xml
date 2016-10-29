@@ -6,9 +6,59 @@
 </description>
     <link>http://rajatsingla.in/</link>
     <atom:link href="http://rajatsingla.in/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 29 Oct 2016 11:43:40 +0530</pubDate>
-    <lastBuildDate>Sat, 29 Oct 2016 11:43:40 +0530</lastBuildDate>
+    <pubDate>Sat, 29 Oct 2016 18:11:26 +0530</pubDate>
+    <lastBuildDate>Sat, 29 Oct 2016 18:11:26 +0530</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
+    
+      <item>
+        <title>What are the options with which protect_with_forgery is called?</title>
+        <description>
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ApplicationController&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActionController&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Base&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;# Prevent CSRF attacks by raising an exception.&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;# For APIs, you may want to use :null_session instead.&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;protect_from_forgery&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;with: :exception&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;&lt;strong&gt;What happens if the token is missing or wrong&lt;/strong&gt; depends on the option with
+ which protect_from_forgery method is called.   &lt;br /&gt;
+ In Rails there are three options: Throw an exception, create a new session or clear the current session.
+&lt;!--more--&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;protect_from_forgery with: :null_session&lt;/code&gt; (dafault option)
+ Set all values to nil in all cookies, including the session.
+ That means the user won’t be logged in anymore for that action and
+can’t perform the change (if the action requires a signed in user).&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;protect_from_forgery with: :reset_session&lt;/code&gt;
+Rails set a new cookie with empty session in browser.That means the user won’t be logged in anymore.   &lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;small hack&lt;/code&gt; If user copies old cookie before forgery attack, he can reset user session after attack.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;protect_from_forgery with: :exception&lt;/code&gt; Raises an ActionController::InvalidAuthenticityToken exception.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;For a user related rails application &lt;code class=&quot;highlighter-rouge&quot;&gt;with: :null_session&lt;/code&gt; is adviced&lt;/p&gt;
+
+&lt;p&gt;We may want to disable CSRF protection for APIs since they are typically designed to be state-less.
+ That is, the request API client will handle the session for you instead of Rails.&lt;/p&gt;
+
+&lt;p&gt;Else the nature of your app decides which option is best.&lt;/p&gt;
+</description>
+        <pubDate>Sat, 29 Oct 2016 12:41:55 +0530</pubDate>
+        <link>http://rajatsingla.in/ruby/2016/10/29/protect-from-forgery-options.html</link>
+        <guid isPermaLink="true">http://rajatsingla.in/ruby/2016/10/29/protect-from-forgery-options.html</guid>
+        
+        <category>ruby</category>
+        
+        <category>csrf</category>
+        
+        
+        <category>ruby</category>
+        
+      </item>
     
       <item>
         <title>How to add csrf in Ember app</title>

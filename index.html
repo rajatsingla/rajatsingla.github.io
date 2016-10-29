@@ -95,7 +95,7 @@
               
               
 
-              <li><a href='/tag/ruby' class='tag'><span class='term'>ruby</span><span class='count'>2</span></a></li><li><a href='/tag/csrf' class='tag'><span class='term'>csrf</span><span class='count'>2</span></a></li><li><a href='/tag/session' class='tag'><span class='term'>session</span><span class='count'>1</span></a></li><li><a href='/tag/cookie' class='tag'><span class='term'>cookie</span><span class='count'>1</span></a></li>
+              <li><a href='/tag/ruby' class='tag'><span class='term'>ruby</span><span class='count'>3</span></a></li><li><a href='/tag/csrf' class='tag'><span class='term'>csrf</span><span class='count'>3</span></a></li><li><a href='/tag/session' class='tag'><span class='term'>session</span><span class='count'>1</span></a></li><li><a href='/tag/cookie' class='tag'><span class='term'>cookie</span><span class='count'>1</span></a></li>
 
             </ul>
         </div>
@@ -105,6 +105,43 @@
   <h1 class="page-heading">Posts</h1>
 
   <ul class="post-list">
+    
+      <li>
+        <span class="post-meta"><i class=" icon-chevron-calendar"></i> Oct 29, 2016</span>
+        <i class=" icon-chevron-comments"></i>
+         <a class="post-meta" href='/ruby/2016/10/29/protect-from-forgery-options.html#disqus_thread' data-disqus-identifier='What+are+the+options+with+which+protect_with_forgery+is+called%3F'>
+            Comments
+         </a>
+         
+           <span class="post-meta"><i class=" icon-chevron-tags"></i>
+             
+              <a title="ruby" href="tag/ruby" class="post-tag">ruby</a>
+             
+              <a title="csrf" href="tag/csrf" class="post-tag">csrf</a>
+             
+           </span>
+          
+
+        <h2>
+          <a class="post-link" href="/ruby/2016/10/29/protect-from-forgery-options.html">What are the options with which protect_with_forgery is called?</a>
+        </h2>
+        
+class ApplicationController &lt; ActionController::Base
+  # Prevent CSRF attacks by raising an exception.
+  # For APIs, you may want to use :null_session instead.
+  protect_from_forgery with: :exception
+end
+
+What happens if the token is missing or wrong depends on the option with
+ which protect_from_forgery method is called.   
+ In Rails there are three options: Throw an exception, create a new session or clear the current session.
+
+
+        <footer class="align-right box-link">
+          <a rel="full-article" href="/ruby/2016/10/29/protect-from-forgery-options.html">Read more <i class=" icon-chevron-right"></i></a>
+        </footer>
+        <hr class="nice-hr">
+      </li>
     
       <li>
         <span class="post-meta"><i class=" icon-chevron-calendar"></i> Aug 6, 2016</span>
