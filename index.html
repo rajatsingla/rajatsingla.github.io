@@ -128,8 +128,8 @@
         What if i’m using rails as api, so my frontend is seperated from rails can i still prevent csrf and how?
 
 So lets take an example where we use ember for frontend and rails as api.
-In this case apart from adding protect_from_forgery in application controller you have to do additional three things.
-One you have to add following code in application controller:
+In this case, apart from adding protect_from_forgery in application controller you have to do additional three things.  
+One you have to add the following code in application controller:
 
 
         <footer class="align-right box-link">
@@ -161,10 +161,11 @@ One you have to add following code in application controller:
         <h2>
           <a class="post-link" href="/ruby/2016/08/04/session-and-csrf-in-rails.html">Sessions and csrf in rails.</a>
         </h2>
-        
-What is session?
+        Most apps need to be able to store some data about a user. Maybe it’s a user id, or a preferred language.
+session is the perfect place to put this kind of data.
+Little bits of data you want to keep around for more than one request.
 
-Session is client’s information which can comprise of various things like current logged in user on that particular client, csrf token or any other information. Now this information can be saved at three places naming cache,cookie,database.
+Sessions are easy to use:
 
 
         <footer class="align-right box-link">

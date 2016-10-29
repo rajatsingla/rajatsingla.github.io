@@ -113,8 +113,8 @@
     <h2 id="what-if-im-using-rails-as-api-so-my-frontend-is-seperated-from-rails-can-i-still-prevent-csrf-and-how">What if i’m using rails as api, so my frontend is seperated from rails can i still prevent csrf and how?</h2>
 
 <p>So lets take an example where we use ember for frontend and rails as api.
-In this case apart from adding protect_from_forgery in application controller you have to do additional three things.
-One you have to add following code in application controller:
+In this case, apart from adding <code class="highlighter-rouge">protect_from_forgery in application controller</code> you have to do additional <strong>three things</strong>.  <br />
+<strong>One</strong> you have to add the following code in application controller:
 <!--more--></p>
 
 <figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">after_action</span> <span class="ss">:set_csrf_token</span>
@@ -127,28 +127,28 @@ One you have to add following code in application controller:
     <span class="k">end</span>
   <span class="k">end</span></code></pre></figure>
 
-<p>Here we are sending newly generated form_authenticity_token in response of xhr request(ajax- XMLHttpRequest)
-“request.xhr?” is to ensure that it is ajax request, we will not want to send token to any other request right.
-<br />Two you have to set this new token in meta tag by extracting it from response.
-<br />Third you will send csrf token in request header by extracting it from meta tag.
-you can achieve two and three by adding following code in app.js of ember</p>
+<p>Here we are sending the newly generated <code class="highlighter-rouge">form_authenticity_token</code> in the response of xhr request(ajax- XMLHttpRequest)   <br />
+<code class="highlighter-rouge">request.xhr?</code> is to ensure that it is ajax request, we would not want to send the token to any other request right.
+<br /><strong>Two</strong> you have to set this new token in meta tag by extracting it from the response.
+<br /><strong>Third</strong> you will send csrf token in the request header by extracting it from the meta tag.   <br />
+you can achieve two and three by adding following code in <code class="highlighter-rouge">app.js</code> of ember</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="err">$</span> <span class="o">-&gt;</span>
-  <span class="vg">$.</span><span class="n">ajaxPrefilter</span> <span class="p">(</span><span class="n">options</span><span class="p">,</span> <span class="n">originalOptions</span><span class="p">,</span> <span class="n">xhr</span><span class="p">)</span> <span class="o">-&gt;</span>
-    <span class="n">token</span> <span class="o">=</span> <span class="err">$</span><span class="p">(</span><span class="s1">'meta[name="csrf-token"]'</span><span class="p">).</span><span class="nf">attr</span><span class="p">(</span><span class="s1">'content'</span><span class="p">)</span>
-    <span class="n">xhr</span><span class="p">.</span><span class="nf">setRequestHeader</span><span class="p">(</span><span class="s1">'X-CSRF-Token'</span><span class="p">,</span> <span class="n">token</span><span class="p">)</span>
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span> <span class="o">-&gt;</span>
+  <span class="nx">$</span><span class="p">.</span><span class="nx">ajaxPrefilter</span> <span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="nx">originalOptions</span><span class="p">,</span> <span class="nx">xhr</span><span class="p">)</span> <span class="o">-&gt;</span>
+    <span class="nx">token</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">'meta[name="csrf-token"]'</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s1">'content'</span><span class="p">)</span>
+    <span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="s1">'X-CSRF-Token'</span><span class="p">,</span> <span class="nx">token</span><span class="p">)</span>
 
-  <span class="err">$</span><span class="p">(</span><span class="n">document</span><span class="p">).</span><span class="nf">ajaxComplete</span> <span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">xhr</span><span class="p">,</span> <span class="n">settings</span><span class="p">)</span> <span class="o">-&gt;</span>
-    <span class="n">csrf_token</span> <span class="o">=</span> <span class="n">xhr</span><span class="p">.</span><span class="nf">getResponseHeader</span><span class="p">(</span><span class="s1">'X-CSRF-Token'</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">csrf_token</span>
-      <span class="err">$</span><span class="p">(</span><span class="s1">'meta[name="csrf-token"]'</span><span class="p">).</span><span class="nf">attr</span> <span class="s1">'content'</span><span class="p">,</span> <span class="n">csrf_token</span></code></pre></figure>
+  <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ajaxComplete</span> <span class="p">(</span><span class="nx">event</span><span class="p">,</span> <span class="nx">xhr</span><span class="p">,</span> <span class="nx">settings</span><span class="p">)</span> <span class="o">-&gt;</span>
+    <span class="nx">csrf_token</span> <span class="o">=</span> <span class="nx">xhr</span><span class="p">.</span><span class="nx">getResponseHeader</span><span class="p">(</span><span class="s1">'X-CSRF-Token'</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nx">csrf_token</span>
+      <span class="nx">$</span><span class="p">(</span><span class="s1">'meta[name="csrf-token"]'</span><span class="p">).</span><span class="nx">attr</span> <span class="s1">'content'</span><span class="p">,</span> <span class="nx">csrf_token</span></code></pre></figure>
 
-<p><br />
-<b>
-Why change csrf token in header on every post request and not only when session changes?
-</b>
-If it were to change token only when session changes there would be an extra overhead to trigger session change and then generate csrf token and set in header.
-It is a lot easier to randomally generate csrf token using session[:_csrf_token] on every post request.</p>
+<p><br /></p>
+
+<h2 id="why-change-csrf-token-in-header-on-every-post-request-and-not-only-when-session-changes">Why change csrf token in header on every post request and not only when session changes?</h2>
+
+<p>If it were to change token only when session changes there would be an extra overhead to trigger session change and then generate csrf token and set in header.
+It is a lot easier to randomally generate csrf token using <code class="highlighter-rouge">session[:_csrf_token]</code> on every post request.</p>
 
   </div>
   <footer class="align-left box-link">
