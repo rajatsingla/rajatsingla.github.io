@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Swap elements in DOM by drag and drop</title>
+  <meta name="description" content="Below is a demo of the same (drag div1 to div2).      Div 1  Div 2First step: Make the elements draggable we want to drag&lt;div id="div1" draggable=true&gt;...">
+  <meta name="keywords" content="Ruby, Programming, Math, Rails, Jekyll, Static sites, Blogging">
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://rajatsingla.in/jquery/2016/10/29/swap-elements-in-dom-by-drag-drop.html">
+  <link rel="alternate" type="application/rss+xml" title="Rajat Singla" href="http://rajatsingla.in/feed.xml">
+</head>
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">
+      Archives
+    </a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+          
+        
+          
+          
+          <a class="page-link" href="/about/">About</a>
+          
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          
+          
+        
+          
+          
+          
+        
+          
+          
+          
+        
+          
+          
+          
+        
+          
+          
+          
+        
+          
+          
+          
+        
+          
+          
+          
+        
+          
+          
+          
+        
+        <a class="page-link" href="/resume/Resume.pdf" target="_blank" title="resume">
+          <img src="/images/singla.png" alt="Rajat Singla" width="36" height="36">
+        </a>
+      </div>
+    </nav>
+
+    <form class="search" action="https://www.google.com/search" method="GET">
+        <input type="hidden" name="as_sitesearch" value="http://rajatsingla.in">
+        <div>
+            <input class="search-input" type="text" name="as_q" placeholder="Search">
+        </div>
+    </form>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      
+        <div class="wrapper max8">
+          <div>
+            <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Swap elements in DOM by drag and drop</h1>
+    <p class="post-meta">
+      <i class=" icon-chevron-calendar"></i>
+      <time datetime="2016-10-29T12:41:55+05:30" itemprop="datePublished">Oct 29, 2016</time>
+       • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Rajat Singla</span></span>
+      
+        <span class="post-meta"><i class=" icon-chevron-tags"></i>
+          
+           <a title="jquery" href="/tag/jquery" class="post-tag">jquery</a>
+          
+           <a title="js" href="/tag/js" class="post-tag">js</a>
+          
+           <a title="html" href="/tag/html" class="post-tag">html</a>
+          
+           <a title="dom" href="/tag/dom" class="post-tag">dom</a>
+          
+        </span>
+        
+    </p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <h4 id="below-is-a-demo-of-the-same-drag-div1-to-div2">Below is a demo of the same (drag div1 to div2).</h4>
+<div class="drag-demo">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+  <script>
+    function drag(ev)
+    {ev.dataTransfer.setData('target_id',ev.target.id);}
+    function allowDrop(ev) {
+ 	    ev.preventDefault();
+ 	    }
+      function drop(ev) {
+        var drop_target = ev.target;
+        var drag_target_id = ev.dataTransfer.getData('target_id');
+        var drag_target = $('#'+drag_target_id)[0];
+        var tmp = document.createElement('span');
+        tmp.className='hide';
+        drop_target.before(tmp);
+        drag_target.before(drop_target);
+        tmp.replaceWith(drag_target);
+      }
+  </script>
+  <div class="draggable-div" id="div1" ondrop="drop(event)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event)">Div 1</div>
+  <div class="draggable-div light" id="div2" ondrop="drop(event)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event)">Div 2</div>
+</div>
+
+<hr />
+<h2 id="first-step-make-the-elements-draggable-we-want-to-drag">First step: Make the elements draggable we want to drag</h2>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"div1"</span> <span class="na">draggable=</span><span class="s">true</span><span class="nt">&gt;</span>Div 1<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"div2"</span> <span class="na">draggable=</span><span class="s">true</span><span class="nt">&gt;</span>Div 2<span class="nt">&lt;/div&gt;</span></code></pre></figure>
+
+<!--more-->
+<h2 id="second-step-save-the-id-of-dragged-element">Second step: Save the id of dragged element</h2>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">drag</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="nx">event</span><span class="p">.</span><span class="nx">dataTransfer</span><span class="p">.</span><span class="nx">setData</span>
+    <span class="p">(</span><span class="s1">'target_id'</span><span class="p">,</span><span class="nx">ev</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+  <span class="p">}</span></code></pre></figure>
+
+<p><code class="highlighter-rouge">event.dataTransfer</code> will be available in whole drag and drop event, so it can be used to keep dragged target id.      <br />
+drag function can be called by attribute <code class="highlighter-rouge">ondragstart</code>, which will call drag function passing event as a argument.</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"div1"</span> <span class="na">draggable=</span><span class="s">true</span> <span class="na">ondragstart=</span><span class="s">"drag(event)"</span><span class="nt">&gt;</span>Div 1<span class="nt">&lt;/div&gt;</span></code></pre></figure>
+
+<h2 id="third-step-allow-element-to-be-dropped-in-other-element">Third step: Allow element to be dropped in other element</h2>
+<p>By default elemets can’t be dropped in other element, so to prevent this default behaviour
+call allowDrop function by attribute <code class="highlighter-rouge">ondragover</code>.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">allowDrop</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span>
+  <span class="p">{</span>
+  <span class="nx">event</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+  <span class="p">}</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"div1"</span> <span class="na">draggable=</span><span class="s">true</span> <span class="na">ondragstart=</span><span class="s">"drag(event)"</span> <span class="na">ondragover=</span><span class="s">"allowDrop(event)"</span><span class="nt">&gt;</span>Div 1<span class="nt">&lt;/div&gt;</span></code></pre></figure>
+
+<h2 id="fourth-step-swap-elements-on-dropping-the-element">Fourth Step: Swap elements on dropping the element</h2>
+<p><code class="highlighter-rouge">ondrop</code> attribute is fired on which a element is dropped, call drop function by <code class="highlighter-rouge">ondrop</code> attribute.</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"div1"</span> <span class="na">draggable=</span><span class="s">true</span> <span class="na">ondragstart=</span><span class="s">"drag(event)"</span> <span class="na">ondragover=</span><span class="s">"allowDrop(event)"</span> <span class="na">ondrop=</span><span class="s">"drop(event)"</span><span class="nt">&gt;</span>Div 1<span class="nt">&lt;/div&gt;</span></code></pre></figure>
+
+<p>In drop function swap drag_target with drop_target to achieve desired result.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">drop</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">event</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>  
+  <span class="kd">var</span> <span class="nx">drop_target</span> <span class="o">=</span> <span class="nx">event</span><span class="p">.</span><span class="nx">target</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">drag_target_id</span> <span class="o">=</span> <span class="nx">ev</span><span class="p">.</span><span class="nx">dataTransfer</span><span class="p">.</span><span class="nx">getData</span><span class="p">(</span><span class="s1">'target_id'</span><span class="p">);</span>
+  <span class="kd">var</span> <span class="nx">drag_target</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">'#'</span><span class="o">+</span><span class="nx">drag_target_id</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span>
+  <span class="kd">var</span> <span class="nx">tmp</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">'span'</span><span class="p">);</span>
+  <span class="nx">tmp</span><span class="p">.</span><span class="nx">className</span><span class="o">=</span><span class="s1">'hide'</span><span class="p">;</span>
+  <span class="nx">drop_target</span><span class="p">.</span><span class="nx">before</span><span class="p">(</span><span class="nx">tmp</span><span class="p">);</span>
+  <span class="nx">drag_target</span><span class="p">.</span><span class="nx">before</span><span class="p">(</span><span class="nx">drop_target</span><span class="p">);</span>
+  <span class="nx">tmp</span><span class="p">.</span><span class="nx">replaceWith</span><span class="p">(</span><span class="nx">drag_target</span><span class="p">);</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>drop function code explanation:</p>
+<ul>
+  <li><code class="highlighter-rouge">event.preventDefault()</code> is to prevent default functionality of drop which is to open dropped element as a link.</li>
+  <li><code class="highlighter-rouge"> event.target</code> get element on which drop is made.</li>
+  <li><code class="highlighter-rouge">ev.dataTransfer.getData('target_id')</code> get id of dragged element from dataTransfer and by id get element.</li>
+  <li><code class="highlighter-rouge">document.createElement('span')</code> make dummy span which will help in swapping the elements.</li>
+  <li><code class="highlighter-rouge">drop_target.before(tmp)</code> append dummy span before drop_target in dom.</li>
+  <li><code class="highlighter-rouge">drag_target.before(drop_target)</code> append drop_target before drag_target in dom.</li>
+  <li><code class="highlighter-rouge">tmp.replaceWith(drag_target)</code> it will replace dummy span with drag_target.</li>
+</ul>
+
+<p>code for swaping elements may seem over-conscious for two div’s,   <br />
+But when there are more than two div’s this is the best way to keep track of element’s position.</p>
+
+<h4 id="note">Note</h4>
+<ul>
+  <li>Make sure your application has jquery loaded.   <br />
+To load jquery add    <br />
+<code class="highlighter-rouge">&lt;script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"&gt;&lt;/script&gt;</code></li>
+  <li>I have made a typo mistake so that you don’t just copy paste but instead understand the code.</li>
+</ul>
+
+<h4 id="source">source</h4>
+<ul>
+  <li><a href="http://www.w3schools.com/html/html5_draganddrop.asp" title="w3schools" target="_blank">w3schools</a></li>
+</ul>
+
+  </div>
+  <footer class="align-left box-link">
+    <a rel="full-article" href="http://rajatsingla.in"><i class="icon-chevron-left"></i> Back to Articles</a>
+  </footer>
+  <hr class="nice-hr">
+
+  
+  <div id="disqus_thread"></div>
+  <script>
+
+  /**
+   *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+   *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables */
+  var disqus_config = function () {
+      this.page.url = 'http://rajatsingla.in/jquery/2016/10/29/swap-elements-in-dom-by-drag-drop.html';  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.identifier = 'Swap+elements+in+DOM+by+drag+and+drop'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+  };
+  (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = '//rajatsingla.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+  })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+  
+</article>
+
+          </div>
+        </div>
+      
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Rajat Singla</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>Rajat Singla</li>
+          <li><a href="mailto:rajatrs5054@gmail.com">rajatrs5054@gmail.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/rajatsingla"><span class="username"><i class=" icon-chevron-github"></i> rajatsingla</span></a>
+
+          </li>
+          
+
+          
+          <li>
+            <a href="https://twitter.com/rajatrs5054"><span class="username"><i class=" icon-chevron-twitter"></i> rajatrs5054</span></a>
+
+          </li>
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3">
+        <p>Hi there, Welcome to rajat's blog. You will find blogs here on ror,emberjs,deployment ,some cool programming stuff and my new findings. Currently i am working on soldier2ndlife(a product of navyug) a portal to help retired veterans.To get my attention send me a paradox. :)
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

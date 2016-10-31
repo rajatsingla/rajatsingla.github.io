@@ -670,3 +670,19 @@ ul.entry-meta {
     color: #008080; }
   .highlight .il {
     color: #099; }
+
+div.draggable-div {
+  width: 25%;
+  display: inline-block;
+  height: 85px;
+  background-color: beige;
+  margin: 0px 10px;
+  padding-top: 70px;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.53);
+  text-align: center;
+  border-radius: 4px;
+  box-shadow: 0px 0px 5px rgba(191, 191, 191, 0.22); }
+
+div.draggable-div.light {
+  background-color: blanchedalmond; }

@@ -6,9 +6,129 @@
 </description>
     <link>http://rajatsingla.in/</link>
     <atom:link href="http://rajatsingla.in/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 29 Oct 2016 18:11:26 +0530</pubDate>
-    <lastBuildDate>Sat, 29 Oct 2016 18:11:26 +0530</lastBuildDate>
+    <pubDate>Mon, 31 Oct 2016 13:00:19 +0530</pubDate>
+    <lastBuildDate>Mon, 31 Oct 2016 13:00:19 +0530</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
+    
+      <item>
+        <title>Swap elements in DOM by drag and drop</title>
+        <description>&lt;h4 id=&quot;below-is-a-demo-of-the-same-drag-div1-to-div2&quot;&gt;Below is a demo of the same (drag div1 to div2).&lt;/h4&gt;
+&lt;div class=&quot;drag-demo&quot;&gt;
+  &lt;script src=&quot;http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+  &lt;script&gt;
+    function drag(ev)
+    {ev.dataTransfer.setData('target_id',ev.target.id);}
+    function allowDrop(ev) {
+ 	    ev.preventDefault();
+ 	    }
+      function drop(ev) {
+        var drop_target = ev.target;
+        var drag_target_id = ev.dataTransfer.getData('target_id');
+        var drag_target = $('#'+drag_target_id)[0];
+        var tmp = document.createElement('span');
+        tmp.className='hide';
+        drop_target.before(tmp);
+        drag_target.before(drop_target);
+        tmp.replaceWith(drag_target);
+      }
+  &lt;/script&gt;
+  &lt;div class=&quot;draggable-div&quot; id=&quot;div1&quot; ondrop=&quot;drop(event)&quot; ondragover=&quot;allowDrop(event)&quot; draggable=&quot;true&quot; ondragstart=&quot;drag(event)&quot;&gt;Div 1&lt;/div&gt;
+  &lt;div class=&quot;draggable-div light&quot; id=&quot;div2&quot; ondrop=&quot;drop(event)&quot; ondragover=&quot;allowDrop(event)&quot; draggable=&quot;true&quot; ondragstart=&quot;drag(event)&quot;&gt;Div 2&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;hr /&gt;
+&lt;h2 id=&quot;first-step-make-the-elements-draggable-we-want-to-drag&quot;&gt;First step: Make the elements draggable we want to drag&lt;/h2&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;div1&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;draggable=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Div 1&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;div2&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;draggable=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Div 2&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;!--more--&gt;
+&lt;h2 id=&quot;second-step-save-the-id-of-dragged-element&quot;&gt;Second step: Save the id of dragged element&lt;/h2&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;drag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;dataTransfer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setData&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'target_id'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ev&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;event.dataTransfer&lt;/code&gt; will be available in whole drag and drop event, so it can be used to keep dragged target id.      &lt;br /&gt;
+drag function can be called by attribute &lt;code class=&quot;highlighter-rouge&quot;&gt;ondragstart&lt;/code&gt;, which will call drag function passing event as a argument.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;div1&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;draggable=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;true&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;ondragstart=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;drag(event)&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Div 1&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h2 id=&quot;third-step-allow-element-to-be-dropped-in-other-element&quot;&gt;Third step: Allow element to be dropped in other element&lt;/h2&gt;
+&lt;p&gt;By default elemets can’t be dropped in other element, so to prevent this default behaviour
+call allowDrop function by attribute &lt;code class=&quot;highlighter-rouge&quot;&gt;ondragover&lt;/code&gt;.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;allowDrop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;preventDefault&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;div1&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;draggable=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;true&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;ondragstart=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;drag(event)&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;ondragover=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;allowDrop(event)&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Div 1&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h2 id=&quot;fourth-step-swap-elements-on-dropping-the-element&quot;&gt;Fourth Step: Swap elements on dropping the element&lt;/h2&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ondrop&lt;/code&gt; attribute is fired on which a element is dropped, call drop function by &lt;code class=&quot;highlighter-rouge&quot;&gt;ondrop&lt;/code&gt; attribute.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;div1&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;draggable=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;true&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;ondragstart=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;drag(event)&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;ondragover=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;allowDrop(event)&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;ondrop=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;drop(event)&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Div 1&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;In drop function swap drag_target with drop_target to achieve desired result.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;drop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;preventDefault&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;  
+  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;drop_target&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;drag_target_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ev&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;dataTransfer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'target_id'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;drag_target&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'#'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;drag_target_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;tmp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;createElement&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'span'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;tmp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'hide'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;drop_target&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;before&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;tmp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;drag_target&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;before&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;drop_target&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;tmp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;replaceWith&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;drag_target&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;drop function code explanation:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;event.preventDefault()&lt;/code&gt; is to prevent default functionality of drop which is to open dropped element as a link.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt; event.target&lt;/code&gt; get element on which drop is made.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ev.dataTransfer.getData('target_id')&lt;/code&gt; get id of dragged element from dataTransfer and by id get element.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;document.createElement('span')&lt;/code&gt; make dummy span which will help in swapping the elements.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;drop_target.before(tmp)&lt;/code&gt; append dummy span before drop_target in dom.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;drag_target.before(drop_target)&lt;/code&gt; append drop_target before drag_target in dom.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;tmp.replaceWith(drag_target)&lt;/code&gt; it will replace dummy span with drag_target.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;code for swaping elements may seem over-conscious for two div’s,   &lt;br /&gt;
+But when there are more than two div’s this is the best way to keep track of element’s position.&lt;/p&gt;
+
+&lt;h4 id=&quot;note&quot;&gt;Note&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;Make sure your application has jquery loaded.   &lt;br /&gt;
+To load jquery add    &lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;script src=&quot;http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js&quot; type=&quot;text/javascript&quot;&amp;gt;&amp;lt;/script&amp;gt;&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;I have made a typo mistake so that you don’t just copy paste but instead understand the code.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;source&quot;&gt;source&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.w3schools.com/html/html5_draganddrop.asp&quot; title=&quot;w3schools&quot; target=&quot;_blank&quot;&gt;w3schools&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Sat, 29 Oct 2016 12:41:55 +0530</pubDate>
+        <link>http://rajatsingla.in/jquery/2016/10/29/swap-elements-in-dom-by-drag-drop.html</link>
+        <guid isPermaLink="true">http://rajatsingla.in/jquery/2016/10/29/swap-elements-in-dom-by-drag-drop.html</guid>
+        
+        <category>jquery</category>
+        
+        <category>js</category>
+        
+        <category>html</category>
+        
+        <category>dom</category>
+        
+        
+        <category>Jquery</category>
+        
+      </item>
     
       <item>
         <title>What are the options with which protect_with_forgery is called?</title>
