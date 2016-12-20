@@ -6,8 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Modules vs Classes in Ruby</title>
-  <meta name="description" content="A Module is a collection of methods and constants. The methods in a module may be instance methods or module methods. Instance methods appear as methods in a...">
+  <title>Difference between Vanilla.js, JavaScript, ECMAScript, ember.js, node.js</title>
+  <meta name="description" content="Vanilla.jsVanilla.js is nothing but a name given to the practice of using plain JavaScriptwithout any additional JavaScript libraries as a mockery to remindf...">
   
   
   
@@ -16,7 +16,7 @@
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://rajatsingla.in/ruby/2016/07/28/module-vs-class.html">
+  <link rel="canonical" href="http://rajatsingla.in/javascript/2016/12/20/diff-btw-vanilla-js-es-emberjs-nodejs.html">
   <link rel="alternate" type="application/rss+xml" title="Rajat Singla" href="http://rajatsingla.in/feed.xml">
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -122,44 +122,63 @@
             <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title" itemprop="name headline">Modules vs Classes in Ruby</h1>
+    <h1 class="post-title" itemprop="name headline">Difference between Vanilla.js, JavaScript, ECMAScript, ember.js, node.js</h1>
     <p class="post-meta">
       <i class=" icon-chevron-calendar"></i>
-      <time datetime="2016-07-28T12:41:55+05:30" itemprop="datePublished">Jul 28, 2016</time>
+      <time datetime="2016-12-20T12:41:55+05:30" itemprop="datePublished">Dec 20, 2016</time>
        • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Rajat Singla</span></span>
+      
+        <span class="post-meta"><i class=" icon-chevron-tags"></i>
+          
+           <a title="js" href="/tag/js" class="post-tag">js</a>
+          
+        </span>
         
     </p>
   </header>
 
   <div class="post-content" itemprop="articleBody">
-    <p>A <strong>Module</strong> is a collection of methods and constants. The methods in a module may be instance methods or module methods. Instance methods appear as methods in a class when the module is included, module methods do not. Conversely, module methods may be called without creating an encapsulating object, while instance methods may not. (See <code class="highlighter-rouge">Module#module_function</code>.)
-<!--more--></p>
+    <h2 id="vanillajs">Vanilla.js</h2>
+<p>Vanilla.js is nothing but a name given to the <strong>practice of using plain JavaScript</strong>
+without any additional JavaScript libraries as a mockery to remind
+framework lovers that many things can be done without the need for additional JavaScript
+libraries.<br />
+<!--more-->
+—</p>
+<h2 id="ecmascript">ECMAScript</h2>
+<p>ECMAScript is a <strong>standard followed by JavaScript language</strong>.
+ECMAScript is standardized by Ecma International in ECMA-262, So that every browser follows this standard.
+There is no compiler out there that would run ECMAScript,
+and I believe JavaScript is considered the Language which implements a standard called ECMAScript. <br />
+<strong>Latest released edition of es is ES6</strong>, adds significant new syntax for writing complex applications.<br />
+Example:</p>
 
-<hr />
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">name</span> <span class="o">=</span> <span class="s2">"Bob"</span><span class="p">,</span> <span class="nx">time</span> <span class="o">=</span> <span class="s2">"today"</span><span class="p">;</span>
+<span class="err">`</span><span class="nx">Hello</span> <span class="nx">$</span><span class="p">{</span><span class="nx">name</span><span class="p">},</span> <span class="nx">how</span> <span class="nx">are</span> <span class="nx">you</span> <span class="nx">$</span><span class="p">{</span><span class="nx">time</span><span class="p">}?</span><span class="err">`</span></code></pre></figure>
 
-<blockquote>
-  <p>In the descriptions that follow, the parameter sym refers to a symbol, which is either a quoted string or a Symbol (such as <code class="highlighter-rouge">:name</code>).</p>
-</blockquote>
+<ul>
+  <li><a href="https://github.com/lukehoban/es6features" title="es6 features" target="_blank">all es6 features</a> <br />
+For browsers that do not suppport es6 you can use babel to transpile code to es5.</li>
+</ul>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">Module</span> <span class="no">Mod</span>
-  <span class="kp">include</span> <span class="no">Math</span>
-  <span class="no">CONST</span> <span class="o">=</span> <span class="mi">1</span>
-  <span class="k">def</span> <span class="nf">meth</span>
-    <span class="c1">#  ...</span>
-  <span class="k">end</span>
-<span class="k">end</span>
-<span class="no">Mod</span><span class="p">.</span><span class="nf">class</span>              <span class="c1">#=&gt; Module</span>
-<span class="no">Mod</span><span class="p">.</span><span class="nf">constants</span>          <span class="c1">#=&gt; [:CONST, :PI, :E]</span>
-<span class="no">Mod</span><span class="p">.</span><span class="nf">instance_methods</span>   <span class="c1">#=&gt; [:meth]</span></code></pre></figure>
+<h2 id="javascript">JavaScript</h2>
+<p><strong>JavaScript is a high-level, dynamic, untyped, and interpreted programming language</strong>.
+It has been standardized in the ECMAScript language specification.
+Alongside HTML and CSS, JavaScript is one of the three core technologies of World Wide Web content production;
+the majority of websites employ it, and all modern Web browsers support it without the need for plug-ins.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>  constants → array
-  constants(inherited) → array
-</code></pre>
-</div>
+<h2 id="emberjs">ember.js</h2>
+<p>Ember or react.js or angular.js are <strong>open-source JavaScript web frameworks</strong> to make ambitious app.
+Based on the Model–view–viewmodel (MVVM) pattern. It(Ember) allows developers to create
+scalable single-page web applications by incorporating common idioms and best practices into the framework.</p>
 
-<p>In the first form, returns an array of the names of all constants accessible from the point of call. This list includes the names of all modules and classes defined in the global scope.</p>
-
-<p>source: <a href="http://ruby-doc.org/core-2.2.0/Module.html" title="link to ruby doc">http://ruby-doc.org/core-2.2.0/Module.html</a></p>
+<h2 id="nodejs">node.js</h2>
+<p>node.js is a <strong>JavaScript runtime</strong> built on chrome’s v8 engine.
+It is used to run JavaScript on server side and for developing various type of tools and applications.
+Node.js has an event-driven architecture capable of asynchronous I/O.
+These design choices aim to optimize throughput and scalability in Web applications with many input/output operations,
+as well as for real-time Web applications (e.g., real-time communication programs and browser games).
+express.js is a web framework for node.js</p>
 
   </div>
   <footer class="align-left box-link">
@@ -175,8 +194,8 @@
    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables */
   var disqus_config = function () {
-      this.page.url = 'http://rajatsingla.in/ruby/2016/07/28/module-vs-class.html';  // Replace PAGE_URL with your page's canonical URL variable
-      this.page.identifier = 'Modules+vs+Classes+in+Ruby'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+      this.page.url = 'http://rajatsingla.in/javascript/2016/12/20/diff-btw-vanilla-js-es-emberjs-nodejs.html';  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.identifier = 'Difference+between+Vanilla.js%2C+JavaScript%2C+ECMAScript%2C+ember.js%2C+node.js'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
   };
   (function() { // DON'T EDIT BELOW THIS LINE
       var d = document, s = d.createElement('script');

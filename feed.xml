@@ -6,13 +6,72 @@
 </description>
     <link>http://rajatsingla.in/</link>
     <atom:link href="http://rajatsingla.in/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 31 Oct 2016 15:24:35 +0530</pubDate>
-    <lastBuildDate>Mon, 31 Oct 2016 15:24:35 +0530</lastBuildDate>
+    <pubDate>Wed, 21 Dec 2016 00:17:12 +0530</pubDate>
+    <lastBuildDate>Wed, 21 Dec 2016 00:17:12 +0530</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
     
       <item>
+        <title>Difference between Vanilla.js, JavaScript, ECMAScript, ember.js, node.js</title>
+        <description>&lt;h2 id=&quot;vanillajs&quot;&gt;Vanilla.js&lt;/h2&gt;
+&lt;p&gt;Vanilla.js is nothing but a name given to the &lt;strong&gt;practice of using plain JavaScript&lt;/strong&gt;
+without any additional JavaScript libraries as a mockery to remind
+framework lovers that many things can be done without the need for additional JavaScript
+libraries.&lt;br /&gt;
+&lt;!--more--&gt;
+—&lt;/p&gt;
+&lt;h2 id=&quot;ecmascript&quot;&gt;ECMAScript&lt;/h2&gt;
+&lt;p&gt;ECMAScript is a &lt;strong&gt;standard followed by JavaScript language&lt;/strong&gt;.
+ECMAScript is standardized by Ecma International in ECMA-262, So that every browser follows this standard.
+There is no compiler out there that would run ECMAScript,
+and I believe JavaScript is considered the Language which implements a standard called ECMAScript. &lt;br /&gt;
+&lt;strong&gt;Latest released edition of es is ES6&lt;/strong&gt;, adds significant new syntax for writing complex applications.&lt;br /&gt;
+Example:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Bob&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;time&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;today&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Hello&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;how&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;are&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;you&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}?&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;`&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/lukehoban/es6features&quot; title=&quot;es6 features&quot; target=&quot;_blank&quot;&gt;all es6 features&lt;/a&gt; &lt;br /&gt;
+For browsers that do not suppport es6 you can use babel to transpile code to es5.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;javascript&quot;&gt;JavaScript&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;JavaScript is a high-level, dynamic, untyped, and interpreted programming language&lt;/strong&gt;.
+It has been standardized in the ECMAScript language specification.
+Alongside HTML and CSS, JavaScript is one of the three core technologies of World Wide Web content production;
+the majority of websites employ it, and all modern Web browsers support it without the need for plug-ins.&lt;/p&gt;
+
+&lt;h2 id=&quot;emberjs&quot;&gt;ember.js&lt;/h2&gt;
+&lt;p&gt;Ember or react.js or angular.js are &lt;strong&gt;open-source JavaScript web frameworks&lt;/strong&gt; to make ambitious app.
+Based on the Model–view–viewmodel (MVVM) pattern. It(Ember) allows developers to create
+scalable single-page web applications by incorporating common idioms and best practices into the framework.&lt;/p&gt;
+
+&lt;h2 id=&quot;nodejs&quot;&gt;node.js&lt;/h2&gt;
+&lt;p&gt;node.js is a &lt;strong&gt;JavaScript runtime&lt;/strong&gt; built on chrome’s v8 engine.
+It is used to run JavaScript on server side and for developing various type of tools and applications.
+Node.js has an event-driven architecture capable of asynchronous I/O.
+These design choices aim to optimize throughput and scalability in Web applications with many input/output operations,
+as well as for real-time Web applications (e.g., real-time communication programs and browser games).
+express.js is a web framework for node.js&lt;/p&gt;
+</description>
+        <pubDate>Tue, 20 Dec 2016 12:41:55 +0530</pubDate>
+        <link>http://rajatsingla.in/javascript/2016/12/20/diff-btw-vanilla-js-es-emberjs-nodejs.html</link>
+        <guid isPermaLink="true">http://rajatsingla.in/javascript/2016/12/20/diff-btw-vanilla-js-es-emberjs-nodejs.html</guid>
+        
+        <category>js</category>
+        
+        
+        <category>javascript</category>
+        
+      </item>
+    
+      <item>
         <title>Swap elements in DOM by drag and drop</title>
-        <description>&lt;h4 id=&quot;below-is-a-demo-of-the-same-drag-div1-to-div2&quot;&gt;Below is a demo of the same (drag div1 to div2).&lt;/h4&gt;
+        <description>&lt;p&gt;Drag and drop is a very common feature. In which you drag an element and drop it somewhere else.
+Drag and drop is a standard feature in HTML5, You can make any element draggable.
+Below are the steps on how to achieve the same.
+&lt;!--more--&gt;&lt;/p&gt;
+&lt;h4 id=&quot;below-is-a-demo-of-the-same-drag-div1-to-div2&quot;&gt;Below is a demo of the same (drag div1 to div2).&lt;/h4&gt;
 &lt;div class=&quot;drag-demo&quot;&gt;
   &lt;script src=&quot;http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
   &lt;script&gt;
@@ -42,7 +101,6 @@
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;div1&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;draggable=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Div 1&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
 &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;div2&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;draggable=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Div 2&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;!--more--&gt;
 &lt;h2 id=&quot;second-step-save-the-id-of-dragged-element&quot;&gt;Second step: Save the id of dragged element&lt;/h2&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;drag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;

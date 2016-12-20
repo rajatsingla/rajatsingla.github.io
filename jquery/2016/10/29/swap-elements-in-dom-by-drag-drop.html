@@ -7,13 +7,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>Swap elements in DOM by drag and drop</title>
-  <meta name="description" content="Below is a demo of the same (drag div1 to div2).      Div 1  Div 2First step: Make the elements draggable we want to drag&lt;div id="div1" draggable=true&gt;...">
+  <meta name="description" content="Drag and drop is a very common feature. In which you drag an element and drop it somewhere else.Drag and drop is a standard feature in HTML5, You can make an...">
   
   
   
-  <meta name="keywords" content="jquery, js, html, dom, ruby, csrf, ruby, csrf, ruby, session, csrf, cookie,  Programming, Math, Rails, Jekyll, Blogging">
+  <meta name="keywords" content="js, jquery, js, html, dom, ruby, csrf, ruby, csrf, ruby, session, csrf, cookie,  Programming, Math, Rails, Jekyll, Blogging">
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
   <link rel="stylesheet" href="/css/main.css">
   <link rel="canonical" href="http://rajatsingla.in/jquery/2016/10/29/swap-elements-in-dom-by-drag-drop.html">
   <link rel="alternate" type="application/rss+xml" title="Rajat Singla" href="http://rajatsingla.in/feed.xml">
@@ -143,7 +144,11 @@
   </header>
 
   <div class="post-content" itemprop="articleBody">
-    <h4 id="below-is-a-demo-of-the-same-drag-div1-to-div2">Below is a demo of the same (drag div1 to div2).</h4>
+    <p>Drag and drop is a very common feature. In which you drag an element and drop it somewhere else.
+Drag and drop is a standard feature in HTML5, You can make any element draggable.
+Below are the steps on how to achieve the same.
+<!--more--></p>
+<h4 id="below-is-a-demo-of-the-same-drag-div1-to-div2">Below is a demo of the same (drag div1 to div2).</h4>
 <div class="drag-demo">
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
   <script>
@@ -173,7 +178,6 @@
 <figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"div1"</span> <span class="na">draggable=</span><span class="s">true</span><span class="nt">&gt;</span>Div 1<span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"div2"</span> <span class="na">draggable=</span><span class="s">true</span><span class="nt">&gt;</span>Div 2<span class="nt">&lt;/div&gt;</span></code></pre></figure>
 
-<!--more-->
 <h2 id="second-step-save-the-id-of-dragged-element">Second step: Save the id of dragged element</h2>
 
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">drag</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span>
