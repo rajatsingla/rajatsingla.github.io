@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>How to manage assets in rails, Difference between app, vendor and lib assets, what is asset pipeline?</title>
+  <meta name="description" content="What is assets pipeline?In rails asset pipeline offers tools and mechanism to manage assets i.e.JavaScript, css, image, video files. Using it you can pre-pro...">
+  
+  
+  
+  <meta name="keywords" content="rails, assets, js, jquery, js, html, dom, ruby, csrf, ruby, csrf, ruby, session, csrf, cookie,  Programming, Math, Rails, Jekyll, Blogging">
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://rajatsingla.in/rails/2016/12/26/manage-assets-diff-btw-app-vendor-lib.html">
+  <link rel="alternate" type="application/rss+xml" title="Rajat Singla" href="http://rajatsingla.in/feed.xml">
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-82100511-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+</head>
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">
+      Archives
+    </a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+          
+        
+          
+          
+          <a class="page-link" href="/about/">About</a>
+          
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          
+          
+        
+          
+          
+          
+        
+          
+          
+          
+        
+          
+          
+          
+        
+          
+          
+          
+        
+          
+          
+          
+        
+          
+          
+          
+        
+          
+          
+          
+        
+          
+          
+          
+        
+          
+          
+          
+        
+        <a class="page-link" href="/resume/Resume.pdf" target="_blank" title="resume">
+          <img src="/images/singla.png" alt="Rajat Singla" width="36" height="36">
+        </a>
+      </div>
+    </nav>
+
+    <form class="search" action="https://www.google.com/search" method="GET">
+        <input type="hidden" name="as_sitesearch" value="http://rajatsingla.in">
+        <div>
+            <input class="search-input" type="text" name="as_q" placeholder="Search">
+        </div>
+    </form>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      
+        <div class="wrapper max8">
+          <div>
+            <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">How to manage assets in rails, Difference between app, vendor and lib assets, what is asset pipeline?</h1>
+    <p class="post-meta">
+      <i class=" icon-chevron-calendar"></i>
+      <time datetime="2016-12-26T12:41:55+05:30" itemprop="datePublished">Dec 26, 2016</time>
+       • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Rajat Singla</span></span>
+      
+        <span class="post-meta"><i class=" icon-chevron-tags"></i>
+          
+           <a title="rails" href="/tag/rails" class="post-tag">rails</a>
+          
+           <a title="assets" href="/tag/assets" class="post-tag">assets</a>
+          
+        </span>
+        
+    </p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <h2 id="what-is-assets-pipeline">What is assets pipeline?</h2>
+<p>In rails asset pipeline offers tools and mechanism to manage assets i.e.
+JavaScript, css, image, video files. Using it you can pre-process(coffeescript,sass), compress, minify and prepare assets for use by browsers.</p>
+
+<p><strong>Problems solved by it</strong></p>
+
+<ul>
+  <li>Asset pipeline solves problem of multiple requests for each asset by compressing and compiling all alike files into one master file.
+<!--more--></li>
+  <li>Problem of caching by adding a hash of content into the name so that browser knows when to request a new copy of file.</li>
+  <li>Languages such as coffeescript, sass, Erb can be easily used in rails because of pre-processers provided.</li>
+</ul>
+
+<hr />
+
+<h2 id="asset-organization-difference-between-app-vendor-and-lib-assets">Asset Organization (Difference between app, vendor and lib assets)</h2>
+<p>Assets can be placed inside an application in one of three locations:
+app/assets, lib/assets or vendor/assets.</p>
+
+<ul>
+  <li>app/assets is for assets that are owned by the application, such as custom images, JavaScript files or stylesheets.</li>
+  <li>lib/assets is for your own libraries’ code that doesn’t really fit into the scope of the application.</li>
+  <li>vendor/assets is for assets that are owned by outside entities, such as code for JavaScript plugins and CSS frameworks.</li>
+</ul>
+
+<p><em>Note: js files under app/assets will be compiled to app.js
+and js files under vendor/assets to vendor.js</em></p>
+
+<p><em>Order in which js files are compiled is same as files are imported in application.js</em></p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// In application.js</span>
+<span class="c1">//</span>
+<span class="c1">//= require jquery</span>
+<span class="c1">//= require jquery_ujs</span>
+<span class="c1">//= require_tree .</span>
+<span class="c1">//= require_tree ./components</span>
+<span class="c1">//= require_self</span></code></pre></figure>
+
+<p>Make seperate folders for image,js,css files under assets folder and keep your files in respective folder. All your assets will be precompiled to public/assets from which they are served as static assets by the web server. The files in app/assets are never served directly in production.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">rails</span><span class="o">-</span><span class="n">app</span><span class="o">/</span>
+    <span class="n">app</span><span class="o">/</span>
+        <span class="n">assets</span><span class="o">/</span>
+            <span class="n">images</span><span class="o">/</span>      <span class="c1"># Image assets</span>
+            <span class="n">javascripts</span><span class="o">/</span> <span class="c1"># Custom Javascript/coffeescript</span>
+            <span class="n">stylesheets</span><span class="o">/</span> <span class="c1"># Custom CSS/Sass</span>
+    <span class="p">.</span><span class="nf">.</span><span class="p">.</span>
+    <span class="nf">vendor</span><span class="o">/</span>
+        <span class="n">assets</span><span class="o">/</span>
+            <span class="n">javascripts</span><span class="o">/</span> <span class="c1"># Javascript libraries, etc.</span>
+            <span class="n">stylesheets</span><span class="o">/</span> <span class="c1"># Vendor themes, javascript library theme</span></code></pre></figure>
+
+<hr />
+
+<p>Rails provide helpers to use assets in your erb files Ex.  <br />
+<code class="highlighter-rouge">.class { background-image: url(&lt;%= asset_path 'image.png' %&gt;) }</code></p>
+
+<hr />
+
+<h2 id="how-to-precompile-assets">How to precompile assets</h2>
+<ul>
+  <li>
+    <p>In development mode, rails automatically precompiles assets on the go.   <br />
+In development mode assets are served as separate files in the order they are specified in the <code class="highlighter-rouge">application.js</code>.</p>
+  </li>
+  <li>
+    <p>To use in Production you need to precompile assets by the following rake task. <br />
+<code class="highlighter-rouge">bundle exec rake assets:precompile</code></p>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="css-and-js-used-for-only-one-of-the-page-in-application-cant-compile-in-app-or-vendorjs-where-to-keep-these-files">css and js used for only one of the page in application, can’t compile in app or vendor.js. Where to keep these files?</h2>
+<p><code class="highlighter-rouge">Rails.application.config.assets.precompile += %w( some-other-file.js even-another.css )</code></p>
+
+<p>Files you don’t want to compile to a common file can be compiled seperately by adding them seperately in asset pipeline array and these files can now be used in erb files of that one particular page, like this     <br />
+<code class="highlighter-rouge">&lt;script src="&lt;%= asset_path 'some-other-file.js' %&gt;"&gt;&lt;script/&gt;</code></p>
+
+<hr />
+
+<h4 id="source">source</h4>
+<ul>
+  <li><a href="https://launchschool.com/blog/rails-asset-pipeline-best-practices" title="asset pipeline best practices" target="_blank">Asset pipeline best practices</a></li>
+  <li><a href="http://guides.rubyonrails.org/asset_pipeline.html" title="rails guide" target="_blank">Rails guide on asset pipeline</a></li>
+</ul>
+
+  </div>
+  <footer class="align-left box-link">
+    <a rel="full-article" href="http://rajatsingla.in"><i class="icon-chevron-left"></i> Back to Articles</a>
+  </footer>
+  <hr class="nice-hr">
+
+  
+  <div id="disqus_thread"></div>
+  <script>
+
+  /**
+   *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+   *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables */
+  var disqus_config = function () {
+      this.page.url = 'http://rajatsingla.in/rails/2016/12/26/manage-assets-diff-btw-app-vendor-lib.html';  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.identifier = 'How+to+manage+assets+in+rails%2C+Difference+between+app%2C+vendor+and+lib+assets%2C+what+is+asset+pipeline%3F'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+  };
+  (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = '//rajatsingla.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+  })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+  
+</article>
+
+          </div>
+        </div>
+      
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Rajat Singla</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>Rajat Singla</li>
+          <li><a href="mailto:rajatrs5054@gmail.com">rajatrs5054@gmail.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/rajatsingla"><span class="username"><i class=" icon-chevron-github"></i> rajatsingla</span></a>
+
+          </li>
+          
+
+          
+          <li>
+            <a href="https://twitter.com/rajatrs5054"><span class="username"><i class=" icon-chevron-twitter"></i> rajatrs5054</span></a>
+
+          </li>
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3">
+        <p>Hi there, Welcome to rajat's blog. You will find blogs here on ror,emberjs,deployment ,some cool programming stuff and my new findings. Currently i am working on soldier2ndlife(a product of navyug) a portal to help retired veterans.To get my attention send me a paradox. :)
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

@@ -6,9 +6,111 @@
 </description>
     <link>http://rajatsingla.in/</link>
     <atom:link href="http://rajatsingla.in/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 21 Dec 2016 23:27:32 +0530</pubDate>
-    <lastBuildDate>Wed, 21 Dec 2016 23:27:32 +0530</lastBuildDate>
+    <pubDate>Tue, 27 Dec 2016 01:26:34 +0530</pubDate>
+    <lastBuildDate>Tue, 27 Dec 2016 01:26:34 +0530</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
+    
+      <item>
+        <title>How to manage assets in rails, Difference between app, vendor and lib assets, what is asset pipeline?</title>
+        <description>&lt;h2 id=&quot;what-is-assets-pipeline&quot;&gt;What is assets pipeline?&lt;/h2&gt;
+&lt;p&gt;In rails asset pipeline offers tools and mechanism to manage assets i.e.
+JavaScript, css, image, video files. Using it you can pre-process(coffeescript,sass), compress, minify and prepare assets for use by browsers.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Problems solved by it&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Asset pipeline solves problem of multiple requests for each asset by compressing and compiling all alike files into one master file.
+&lt;!--more--&gt;&lt;/li&gt;
+  &lt;li&gt;Problem of caching by adding a hash of content into the name so that browser knows when to request a new copy of file.&lt;/li&gt;
+  &lt;li&gt;Languages such as coffeescript, sass, Erb can be easily used in rails because of pre-processers provided.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;asset-organization-difference-between-app-vendor-and-lib-assets&quot;&gt;Asset Organization (Difference between app, vendor and lib assets)&lt;/h2&gt;
+&lt;p&gt;Assets can be placed inside an application in one of three locations:
+app/assets, lib/assets or vendor/assets.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;app/assets is for assets that are owned by the application, such as custom images, JavaScript files or stylesheets.&lt;/li&gt;
+  &lt;li&gt;lib/assets is for your own libraries’ code that doesn’t really fit into the scope of the application.&lt;/li&gt;
+  &lt;li&gt;vendor/assets is for assets that are owned by outside entities, such as code for JavaScript plugins and CSS frameworks.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;em&gt;Note: js files under app/assets will be compiled to app.js
+and js files under vendor/assets to vendor.js&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Order in which js files are compiled is same as files are imported in application.js&lt;/em&gt;&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;c1&quot;&gt;// In application.js&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//= require jquery&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//= require jquery_ujs&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//= require_tree .&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//= require_tree ./components&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//= require_self&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Make seperate folders for image,js,css files under assets folder and keep your files in respective folder. All your assets will be precompiled to public/assets from which they are served as static assets by the web server. The files in app/assets are never served directly in production.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;rails&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;assets&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;images&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;      &lt;span class=&quot;c1&quot;&gt;# Image assets&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;javascripts&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# Custom Javascript/coffeescript&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;stylesheets&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# Custom CSS/Sass&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;
+    &lt;span class=&quot;nf&quot;&gt;vendor&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;assets&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;javascripts&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# Javascript libraries, etc.&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;stylesheets&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# Vendor themes, javascript library theme&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Rails provide helpers to use assets in your erb files Ex.  &lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;.class { background-image: url(&amp;lt;%= asset_path 'image.png' %&amp;gt;) }&lt;/code&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;how-to-precompile-assets&quot;&gt;How to precompile assets&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;In development mode, rails automatically precompiles assets on the go.   &lt;br /&gt;
+In development mode assets are served as separate files in the order they are specified in the &lt;code class=&quot;highlighter-rouge&quot;&gt;application.js&lt;/code&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;To use in Production you need to precompile assets by the following rake task. &lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;bundle exec rake assets:precompile&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;css-and-js-used-for-only-one-of-the-page-in-application-cant-compile-in-app-or-vendorjs-where-to-keep-these-files&quot;&gt;css and js used for only one of the page in application, can’t compile in app or vendor.js. Where to keep these files?&lt;/h2&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Rails.application.config.assets.precompile += %w( some-other-file.js even-another.css )&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Files you don’t want to compile to a common file can be compiled seperately by adding them seperately in asset pipeline array and these files can now be used in erb files of that one particular page, like this     &lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;script src=&quot;&amp;lt;%= asset_path 'some-other-file.js' %&amp;gt;&quot;&amp;gt;&amp;lt;script/&amp;gt;&lt;/code&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h4 id=&quot;source&quot;&gt;source&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://launchschool.com/blog/rails-asset-pipeline-best-practices&quot; title=&quot;asset pipeline best practices&quot; target=&quot;_blank&quot;&gt;Asset pipeline best practices&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://guides.rubyonrails.org/asset_pipeline.html&quot; title=&quot;rails guide&quot; target=&quot;_blank&quot;&gt;Rails guide on asset pipeline&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Mon, 26 Dec 2016 12:41:55 +0530</pubDate>
+        <link>http://rajatsingla.in/rails/2016/12/26/manage-assets-diff-btw-app-vendor-lib.html</link>
+        <guid isPermaLink="true">http://rajatsingla.in/rails/2016/12/26/manage-assets-diff-btw-app-vendor-lib.html</guid>
+        
+        <category>rails</category>
+        
+        <category>assets</category>
+        
+        
+        <category>rails</category>
+        
+      </item>
     
       <item>
         <title>Difference between Vanilla.js, JavaScript, ECMAScript, ember.js, node.js</title>
