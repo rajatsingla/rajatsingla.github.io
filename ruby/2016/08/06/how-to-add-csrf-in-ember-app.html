@@ -122,9 +122,29 @@
 
 </header>
 
-
-    <div class="page-content">
+    <div class="page-content" id="top">
       
+        
+          <div class="raja-navs" id="nav"><ul><li><a href=#top>Content</a></li><li><a href=#what-if-im-using-rails-as-api-so-my-frontend-is-seperated-from-rails-can-i-still-prevent-csrf-and-how>what if im using rails as api so my frontend is seperated from rails can i still prevent csrf and how</a></li><li><a href=#why-change-csrf-token-in-header-on-every-post-request-and-not-only-when-session-changes>why change csrf token in header on every post request and not only when session changes</a></li></ul></div>
+            <script>
+              document.body.onscroll=fix_nav
+              function css(el, styles) {
+                  for (var property in styles)
+                      el.style[property] = styles[property];
+              }
+              function fix_nav() {
+                var top=document.body.scrollTop;
+                var el=document.getElementById('nav');
+                if(el){
+                  if(top>64){
+                    css(el, { position:'fixed',top:'40px',opacity:.4 });
+                  } else {
+                    css(el, { position:'absolute',top:'105px',opacity:1 });
+                  }
+                }
+              }
+          </script>
+        
         <div class="wrapper max8">
           <div>
             <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
@@ -143,7 +163,7 @@
            <a title="csrf" href="/tag/csrf" class="post-tag">csrf</a>
           
         </span>
-        
+      
     </p>
   </header>
 
