@@ -128,6 +128,7 @@
           <div class="raja-navs" id="nav"><ul><li><a href=#top>Content</a></li><li><a href=#below-is-a-demo-of-the-same-drag-div1-to-div2>below is a demo of the same drag div1 to div2</a></li><li><a href=#div1>div1</a></li><li><a href=#div2>div2</a></li><li><a href=#first-step-make-the-elements-draggable-we-want-to-drag>first step make the elements draggable we want to drag</a></li><li><a href=#second-step-save-the-id-of-dragged-element>second step save the id of dragged element</a></li><li><a href=#third-step-allow-element-to-be-dropped-in-other-element>third step allow element to be dropped in other element</a></li><li><a href=#fourth-step-swap-elements-on-dropping-the-element>fourth step swap elements on dropping the element</a></li><li><a href=#note>note</a></li><li><a href=#source>source</a></li></ul></div>
           <script>
   document.body.onscroll=window_scroll
+  window.onload=window_load
   function css(el, styles) {
       for (var property in styles)
           el.style[property] = styles[property];
@@ -137,6 +138,17 @@
     // setTimeout(highlight_nav, 0);
     highlight_nav()
   };
+  function window_load(){
+    add_up_arrow()
+  };
+  function add_up_arrow(){
+    var all_h3=document.getElementsByTagName('hr')
+    if (window.innerWidth<640 && screen.width<640){
+      for (var i = 0; i < all_h3.length; i++) {
+          all_h3[i].outerHTML='<span class="top-arrow"><a href="#top" title="To top"></a></span><hr></hr>'
+      }
+    }
+  }
   function fix_nav() {
     var top=document.body.scrollTop;
     var el=document.getElementById('nav');

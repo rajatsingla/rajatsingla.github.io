@@ -597,6 +597,22 @@ ul.entry-meta {
 .raja-navs .active-li {
   color: #2a7ae2; }
 
+.top-arrow {
+  float: right;
+  position: absolute;
+  right: 20px; }
+
+.top-arrow a {
+  position: relative;
+  font-family: FontAwesome;
+  display: inline-block;
+  top: -15px;
+  opacity: .8; }
+.top-arrow a::before {
+  display: inline-block;
+  content: "\f062";
+  font-size: 24px; }
+
 /**
  * Syntax highlighting styles
  */
