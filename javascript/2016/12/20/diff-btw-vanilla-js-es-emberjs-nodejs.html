@@ -126,24 +126,58 @@
       
         
           <div class="raja-navs" id="nav"><ul><li><a href=#top>Content</a></li><li><a href=#vanillajs>vanillajs</a></li><li><a href=#ecmascript>ecmascript</a></li><li><a href=#javascript>javascript</a></li><li><a href=#emberjs>emberjs</a></li><li><a href=#nodejs>nodejs</a></li></ul></div>
-            <script>
-              document.body.onscroll=fix_nav
-              function css(el, styles) {
-                  for (var property in styles)
-                      el.style[property] = styles[property];
-              }
-              function fix_nav() {
-                var top=document.body.scrollTop;
-                var el=document.getElementById('nav');
-                if(el){
-                  if(top>64){
-                    css(el, { position:'fixed',top:'40px',opacity:.4 });
-                  } else {
-                    css(el, { position:'absolute',top:'105px',opacity:1 });
-                  }
-                }
-              }
-          </script>
+          <script>
+  document.body.onscroll=window_scroll
+  function css(el, styles) {
+      for (var property in styles)
+          el.style[property] = styles[property];
+  };
+  function window_scroll(){
+    fix_nav();
+    // setTimeout(highlight_nav, 0);
+    highlight_nav()
+  };
+  function fix_nav() {
+    var top=document.body.scrollTop;
+    var el=document.getElementById('nav');
+    if(el){
+      if(top>64){
+        css(el, { position:'fixed',top:'40px',opacity:.4 });
+      } else {
+        css(el, { position:'absolute',top:'105px',opacity:1 });
+      }
+    }
+  };
+  function highlight_nav(){
+    var h_tag=['h1','h2','h3','h4','h5','h6']
+    for (var i = 0; i < h_tag.length; i++) {
+      var ele=document.getElementsByTagName(h_tag[i]);
+      for (var j = 0; j < ele.length; j++) {
+        if(Math.abs(ele[j].offsetTop - window.pageYOffset)<100){
+            if (ele[j].id.length)
+              do_highlight_nav(ele[j].id);
+            return
+        }
+      }
+    }
+  };
+  function do_highlight_nav(id){
+    var navs=document.getElementsByClassName('raja-navs')
+    if (navs.length>0){
+      navs=navs[0]
+      var nav_li=document.getElementsByClassName('active-li')
+      for (var k = 0; k < nav_li.length; k++) {
+        nav_li[k].className=''
+        }
+      var to_h=document.querySelector("a[href='#"+id+"']")
+      if (to_h){
+          to_h.className='active-li'
+        }
+      }
+  };
+
+</script>
+
         
         <div class="wrapper max8">
           <div>

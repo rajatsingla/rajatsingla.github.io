@@ -594,6 +594,9 @@ ul.entry-meta {
   margin-top: 0;
   font-weight: bold; }
 
+.raja-navs .active-li {
+  color: #2a7ae2; }
+
 /**
  * Syntax highlighting styles
  */
