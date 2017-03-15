@@ -6,8 +6,8 @@
 </description>
     <link>http://rajatsingla.in/</link>
     <atom:link href="http://rajatsingla.in/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 14 Mar 2017 23:57:10 +0530</pubDate>
-    <lastBuildDate>Tue, 14 Mar 2017 23:57:10 +0530</lastBuildDate>
+    <pubDate>Thu, 16 Mar 2017 00:27:38 +0530</pubDate>
+    <lastBuildDate>Thu, 16 Mar 2017 00:27:38 +0530</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
     
       <item>
@@ -35,8 +35,8 @@ Add the following script for google autocomplete.
     &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ele&lt;/span&gt;
       &lt;span class=&quot;n&quot;&gt;ele&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;delhi&quot;&lt;/span&gt;
       &lt;span class=&quot;nb&quot;&gt;sleep&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;ele&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;native&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;send_keys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:keydown&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;ele&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;native&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;send_keys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:enter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;ele&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;native&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;send_keys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:arrow_down&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;ele&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;native&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;send_keys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
     &lt;span class=&quot;nb&quot;&gt;sleep&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
   &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
