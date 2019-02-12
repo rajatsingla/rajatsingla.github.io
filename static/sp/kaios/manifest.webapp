@@ -1,0 +1,178 @@
+{
+	"name": "Booking.com",
+	"description": "Big savings on hotels in 120,000 destinations worldwide. Browse hotel reviews and find the guaranteed best price on hotels for all budgets.",
+	"version": "1.0",
+
+	"start_url": "https://rsingla-app-01.fab4.dev.booking.com",
+
+	"icons": {
+		"56": "https://aff.bstatic.com/static/sp/kaios/booking_56.png",
+		"112": "https://aff.bstatic.com/static/sp/kaios/booking_112.png"
+	},
+
+	"permissions": {
+		"Geolocation": {
+			"description": "Required for user location"
+		}
+	},
+	"cursor": true,
+	"ime_default_softkey_bar": true,
+	"fullscreen": true,
+	"default_locale": "en-US",
+
+	"developer": {
+		"name": "Booking.com",
+		"url": "http://booking.com"
+	},
+
+	"locales": {
+		"ar-SA":{
+			"name": "Booking.com",
+			"description": "اكتشف عروض أماكن الإقامة من حول العالم"
+		},
+		"bg-BG":{
+			"name": "Booking.com",
+			"description": "Открийте оферти за настаняване в цял свят"
+		},
+		"cs-CZ":{
+			"name": "Booking.com",
+			"description": "Najděte si nabídky ubytování"
+		},
+		"da-DK":{
+			"name": "Booking.com",
+			"description": "Find tilbud på overnatning i hele verden"
+		},
+		"de-DE":{
+			"name": "Booking.com",
+			"description": "Weltweit Angebote für Unterkünfte finden"
+		},
+		"el-GR":{
+			"name": "Booking.com",
+			"description": "Βρείτε προσφορές για καταλύματα"
+		},
+		"en-US":{
+			"name": "Booking.com",
+			"description": "Find accommodation deals worldwide"
+		},
+		"es-ES":{
+			"name": "Booking.com",
+			"description": "Encuentra ofertas en alojamientos"
+		},
+		"et-EE":{
+			"name": "Booking.com",
+			"description": "Leia majutuspakkumisi üle maailma"
+		},
+		"fi-FI":{
+			"name": "Booking.com",
+			"description": "Etsi majoitustarjouksia ympäri maailmaa"
+		},
+		"fr-FR":{
+			"name": "Booking.com",
+			"description": "Des offres d'hébergements où vous voulez"
+		},
+		"hr-HR":{
+			"name": "Booking.com",
+			"description": "Pronađi najbolje ponude za smještaj diljem svijeta"
+		},
+		"hu-HU":{
+			"name": "Booking.com",
+			"description": "Keressen szállásajánlatokat világszerte"
+		},
+		"id-ID":{
+			"name": "Booking.com",
+			"description": "Temukan promo akomodasi di seluruh dunia"
+		},
+		"he-IL":{
+			"name": "Booking.com",
+			"description": "מצאו דילים למקומות אירוח בכל רחבי העולם"
+		},
+		"it-IT":{
+			"name": "Booking.com",
+			"description": "Trova offerte su alloggi nel mondo"
+		},
+		"is-IS":{
+			"name": "Booking.com",
+			"description": "Finndu tilboð á gistingu um allan heim"
+		},
+		"lt-LT":{
+			"name": "Booking.com",
+			"description": "Raskite viešnagės vietų visame pasaulyje"
+		},
+		"lv-LV":{
+			"name": "Booking.com",
+			"description": "Atrodiet naktsmītņu piedāvājumus"
+		},
+		"ms-MY":{
+			"name": "Booking.com",
+			"description": "Cari tawaran penginapan di seluruh dunia"
+		},
+		"nl-NL":{
+			"name": "Booking.com",
+			"description": "Vind accommodatiedeals wereldwijd"
+		},
+		"nb-NO":{
+			"name": "Booking.com",
+			"description": "Finn tilbud på overnatting verden over"
+		},
+		"pl-PL":{
+			"name": "Booking.com",
+			"description": "Szukaj ofert wynajmu na całym świecie"
+		},
+		"pt-BR":{
+			"name": "Booking.com",
+			"description": "Veja ofertas de acomodações pelo mundo"
+		},
+		"pt-PT":{
+			"name": "Booking.com",
+			"description": "Encontre ofertas em alojamentos"
+		},
+		"ro-RO":{
+			"name": "Booking.com",
+			"description": "Găsiți oferte de cazare în toată lumea"
+		},
+		"ru-RU":{
+			"name": "Booking.com",
+			"description": "Найдите спецпредложения на жилье по всему миру"
+		},
+		"sk-SK":{
+			"name": "Booking.com",
+			"description": "Nájdite si výhodné ponuky ubytovania na celom svete"
+		},
+		"sl-SI":{
+			"name": "Booking.com",
+			"description": "Najdite ponudbe nastanitev po vsem svetu"
+		},
+		"sr-Latn-CS":{
+			"name": "Booking.com",
+			"description": "Pronađite ponude za smeštaj širom sveta"
+		},
+		"sv-SE":{
+			"name": "Booking.com",
+			"description": "Hitta boendeerbjudanden världen över"
+		},
+		"th-TH":{
+			"name": "Booking.com",
+			"description": "ค้นหาข้อเสนอจองที่พักจากทั่วโลก"
+		},
+		"tr-TR":{
+			"name": "Booking.com",
+			"description": "Dünya çapında konaklama fırsatları bulun"
+		},
+		"uk-UA":{
+			"name": "Booking.com",
+			"description": "Знайдіть пропозиції помешкань у всьому світі"
+		},
+		"vi-VN":{
+			"name": "Booking.com",
+			"description": "Tìm ưu đãi chỗ nghỉ trên khắp thế giới"
+		},
+		"zh-CN":{
+			"name": "Booking.com",
+			"description": "寻找全球住宿优惠"
+		},
+		"zh-TW":{
+			"name": "Booking.com",
+			"description": "搜尋全球住宿優惠"
+		}
+	}
+}
